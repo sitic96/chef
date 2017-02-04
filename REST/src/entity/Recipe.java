@@ -6,24 +6,20 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * Created by sitora on 26.01.17.
+ * Created by sitora on 04.02.17.
  */
 
 @XmlRootElement()
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Category extends Entity {
+public class Recipe extends Entity {
     @XmlElement
-    private Long id;
+    Long id;
     @XmlElement
-    private String name;
-
-    public Category() {
-    }
-
-    public Category(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+    String name;
+    @XmlElement
+    Integer category;
+    @XmlElement
+    String text;
 
     public Long getId() {
         return id;
@@ -41,11 +37,19 @@ public class Category extends Entity {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Category{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+    public Integer getCategory() {
+        return category;
+    }
+
+    public void setCategory(Integer category) {
+        this.category = category;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }

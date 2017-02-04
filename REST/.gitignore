@@ -5,6 +5,7 @@
 
 # User-specific stuff:
 .idea/workspace.xml
+.idea
 web/WEB-INF/lib/
 .idea/tasks.xml
 .idea/dictionaries
@@ -59,3 +60,4 @@ fabric.properties
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
+web/WEB-INF/
