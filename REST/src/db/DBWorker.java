@@ -2,6 +2,7 @@ package db;
 
 import entity.Category;
 import entity.Entity;
+import entity.Ingredient;
 import entity.Recipe;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.ResultSetHandler;
@@ -60,6 +61,20 @@ public class DBWorker {
         }
     }
 
+    public static List<Ingredient> getAllIngredients(String table, String objName) {
+        try {
+            QueryRunner run = new QueryRunner(Connector.getDataSource());
+            ResultSetHandler<List<Ingredient>> h = new BeanListHandler<>((Class<Ingredient>) Class.forName("entity." + objName));
+            List<Ingredient> categories = run.query("SELECT * FROM " + table, h);
+            return categories;
+
+        } catch (SQLException e) {
+            throw new WebServiceException();
+        } catch (ClassNotFoundException e) {
+            throw new WebServiceException();
+        }
+    }
+
     public static void addNewCategory(String name) {
         if (!exist("Categories", name, "Name")) {
             insert("INSERT INTO `Categories`(`name`) VALUES (\"" + name + "\")");
@@ -74,6 +89,12 @@ public class DBWorker {
         }
     }
 
+    public static void addNewIngredient(String name) {
+        if (!exist("Categories", name, "Name")) {
+            insert("INSERT INTO `Ingredients`(`name`) VALUES (\"" + name + "\")");
+        }
+    }
+
     public static void removeCategory(Long id) {
         String sqlLine = "DELETE FROM `Categories` WHERE id = " + id;
         remove(sqlLine);
@@ -84,6 +105,11 @@ public class DBWorker {
         remove(sqlLine);
     }
 
+    public static void removeIngredient(Long id) {
+        String sqlLine = "DELETE FROM `Ingredients` WHERE id = " + id;
+        remove(sqlLine);
+    }
+
     public static void updateCategory(Long id, String newName) {
         String sqlLine = "UPDATE `Categories` SET 'NAME' = \"" + newName + "\" WHERE id = " + id;
         update(sqlLine);
@@ -91,6 +117,11 @@ public class DBWorker {
 
     public static void updateRecipe(Long id, String name, String text, Integer category) {
         String sqlLine = "UPDATE `Categories` SET 'NAME' = \"" + name + "\", 'text' = \"" + text + "\", 'category' = " + category + " WHERE id = " + id;
+        update(sqlLine);
+    }
+
+    public static void updateIngredient(Long id, String name) {
+        String sqlLine = "UPDATE `Ingredients` SET 'NAME' = \"" + name + "\" WHERE id = " + id;
         update(sqlLine);
     }
 
