@@ -4,7 +4,6 @@ package rest; /**
 
 import db.DBWorker;
 import entity.Category;
-import entity.Entity;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.GenericEntity;
@@ -16,15 +15,16 @@ import java.util.List;
 public class CategoryResource {
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
     @Path("{id}")
-    public Entity getCategory(@PathParam("id") Integer id) {
-        return DBWorker.readById("Category", "Categories", id);
+    public Category getCategory(@PathParam("id") Integer id) {
+        Category c = DBWorker.readByIdСategory("Category", "Categories", id);
+        return c;
     }
 
     @GET
     @Path("/all")
-    @Produces(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
     public Response getAllCategories() {
         GenericEntity<List<Category>> entity = new GenericEntity<List<Category>>(DBWorker.getAllCategories("Categories", "Category")) {
         };
@@ -33,21 +33,24 @@ public class CategoryResource {
 
     @POST
     @Path("/add")
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
+    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
     public void addNewCategory(Category category) {
         DBWorker.addNewCategory(category.getName());
     }
 
     @POST
     @Path("/remove")
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
+    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
     public void removeCategory(Category category) {
         DBWorker.removeCategory(category.getId());
     }
 
     @POST
     @Path("/update")
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
+    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
     public void updateCategory(Category category) {
         DBWorker.updateCategory(category.getId(), category.getName());
     }

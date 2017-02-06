@@ -1,7 +1,6 @@
 package db;
 
 import entity.Category;
-import entity.Entity;
 import entity.Ingredient;
 import entity.Recipe;
 import org.apache.commons.dbutils.QueryRunner;
@@ -19,12 +18,40 @@ import java.util.List;
  */
 public class DBWorker {
 
-    public static Entity readById(String objName, String table, Integer id) {
+    public static Ingredient readByIdIngredient(String objName, String table, Integer id) {
         try {
             QueryRunner run = new QueryRunner(Connector.getDataSource());
-            ResultSetHandler<List<Entity>> h = new BeanListHandler<>((Class<Entity>) Class.forName("entity." + objName));
-            List<Entity> categories = run.query("SELECT * FROM " + table + " where id = " + id, h);
-            return categories.get(0);
+            ResultSetHandler<List<Ingredient>> h = new BeanListHandler<>((Class<Ingredient>) Class.forName("entity." + objName));
+            List<Ingredient> query = run.query("SELECT * FROM " + table + " where id = " + id, h);
+            return query.get(0);
+
+        } catch (SQLException e) {
+            throw new WebServiceException();
+        } catch (ClassNotFoundException e) {
+            throw new WebServiceException();
+        }
+    }
+
+    public static Category readByIdСategory(String objName, String table, Integer id) {
+        try {
+            QueryRunner run = new QueryRunner(Connector.getDataSource());
+            ResultSetHandler<List<Category>> h = new BeanListHandler<>((Class<Category>) Class.forName("entity." + objName));
+            List<Category> query = run.query("SELECT * FROM " + table + " where id = " + id, h);
+            return query.get(0);
+
+        } catch (SQLException e) {
+            throw new WebServiceException();
+        } catch (ClassNotFoundException e) {
+            throw new WebServiceException();
+        }
+    }
+
+    public static Recipe readByIdRecipe(String objName, String table, Integer id) {
+        try {
+            QueryRunner run = new QueryRunner(Connector.getDataSource());
+            ResultSetHandler<List<Recipe>> h = new BeanListHandler<>((Class<Recipe>) Class.forName("entity." + objName));
+            List<Recipe> query = run.query("SELECT * FROM " + table + " where id = " + id, h);
+            return query.get(0);
 
         } catch (SQLException e) {
             throw new WebServiceException();

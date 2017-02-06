@@ -1,7 +1,6 @@
 package rest;
 
 import db.DBWorker;
-import entity.Entity;
 import entity.Recipe;
 
 import javax.ws.rs.*;
@@ -17,15 +16,15 @@ import java.util.List;
 public class RecipeResource {
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
     @Path("{id}")
-    public Entity getRecipe(@PathParam("id") Integer id) {
-        return DBWorker.readById("Recipe", "Recipes", id);
+    public Recipe getRecipe(@PathParam("id") Integer id) {
+        return DBWorker.readByIdRecipe("Recipe", "Recipes", id);
     }
 
     @GET
     @Path("/all")
-    @Produces(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
     public Response getAllRecipes() {
         GenericEntity<List<Recipe>> entity = new GenericEntity<List<Recipe>>(DBWorker.getAllRecipes("Recipes", "Recipe")) {
         };
@@ -34,21 +33,24 @@ public class RecipeResource {
 
     @POST
     @Path("/add")
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
+    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
     public void addNewRecipe(Recipe recipe) {
         DBWorker.addNewRecipe(recipe.getName(), recipe.getCategory(), recipe.getText());
     }
 
     @POST
     @Path("/remove")
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
+    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
     public void removeRecipe(Recipe recipe) {
         DBWorker.removeRecipe(recipe.getId());
     }
 
     @POST
     @Path("/update")
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
+    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
     public void updateCategory(Recipe recipe) {
         DBWorker.updateRecipe(recipe.getId(), recipe.getName(), recipe.getText(), recipe.getCategory());
     }

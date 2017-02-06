@@ -18,15 +18,15 @@ import java.util.List;
 public class IngredientResource {
 
     @GET
-    @Produces(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
     @Path("{id}")
-    public Entity getIngredient(@PathParam("id") Integer id) {
-        return DBWorker.readById("Ingredient", "Ingredients", id);
+    public Ingredient getIngredient(@PathParam("id") Integer id) {
+        return DBWorker.readByIdIngredient("Ingredient", "Ingredients", id);
     }
 
     @GET
     @Path("/all")
-    @Produces(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
     public Response getAllIngredients() {
         GenericEntity<List<Ingredient>> entity = new GenericEntity<List<Ingredient>>(DBWorker.getAllIngredients("Ingredients", "Ingredient")) {
         };
@@ -35,21 +35,24 @@ public class IngredientResource {
 
     @POST
     @Path("/add")
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
+    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
     public void addNewIngredient(Ingredient ingredient) {
         DBWorker.addNewIngredient(ingredient.getName());
     }
 
     @POST
     @Path("/remove")
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
+    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
     public void removeIngredient(Ingredient ingredient) {
         DBWorker.removeIngredient(ingredient.getId());
     }
 
     @POST
     @Path("/update")
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
+    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
     public void updateIngredient(Ingredient ingredient) {
         DBWorker.updateIngredient(ingredient.getId(), ingredient.getName());
     }

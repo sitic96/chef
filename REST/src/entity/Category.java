@@ -1,7 +1,5 @@
 package entity;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -10,11 +8,10 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 
 @XmlRootElement()
-@XmlAccessorType(XmlAccessType.FIELD)
-public class Category extends Entity {
-    @XmlElement
+public class Category {
+    @XmlElement(name = "id")
     private Long id;
-    @XmlElement
+    @XmlElement(name = "name")
     private String name;
 
     public Category() {
