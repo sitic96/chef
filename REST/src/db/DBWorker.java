@@ -51,6 +51,8 @@ public class DBWorker {
             QueryRunner run = new QueryRunner(Connector.getDataSource());
             ResultSetHandler<List<Recipe>> h = new BeanListHandler<>((Class<Recipe>) Class.forName("entity." + objName));
             List<Recipe> query = run.query("SELECT * FROM " + table + " where id = " + id, h);
+            query.get(0).setIngredients(run.query("select * from Ingredients where id in (SELECT ingredient from Rec_Ing Rec_Ing WHERE recipe = " +
+                    query.get(0).getId() + " )", new BeanListHandler<>(Ingredient.class)));
             return query.get(0);
 
         } catch (SQLException e) {
@@ -78,8 +80,12 @@ public class DBWorker {
         try {
             QueryRunner run = new QueryRunner(Connector.getDataSource());
             ResultSetHandler<List<Recipe>> h = new BeanListHandler<>((Class<Recipe>) Class.forName("entity." + objName));
-            List<Recipe> categories = run.query("SELECT * FROM " + table, h);
-            return categories;
+            List<Recipe> recipes = run.query("SELECT * FROM " + table, h);
+            for (Recipe recipe : recipes) {
+                recipe.setIngredients(run.query("select * from Ingredients where id in (SELECT ingredient from Rec_Ing Rec_Ing WHERE recipe = " +
+                        recipe.getId() + " )", new BeanListHandler<>(Ingredient.class)));
+            }
+            return recipes;
 
         } catch (SQLException e) {
             throw new WebServiceException();

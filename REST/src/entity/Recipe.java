@@ -4,6 +4,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.List;
 
 /**
  * Created by sitora on 04.02.17.
@@ -13,6 +14,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Recipe extends Entity {
     @XmlElement
+    List<Ingredient> ingredients;
+    @XmlElement
     Long id;
     @XmlElement
     String name;
@@ -20,6 +23,14 @@ public class Recipe extends Entity {
     Integer category;
     @XmlElement
     String text;
+
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
 
     public Long getId() {
         return id;
