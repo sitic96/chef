@@ -14,6 +14,7 @@
           <element id="file-copy" path="$PROJECT_DIR$/../restful/web/WEB-INF/lib/commons-dbutils-1.6-tests.jar" />
           <element id="file-copy" path="$PROJECT_DIR$/../restful/web/WEB-INF/lib/commons-dbutils-1.6.jar" />
           <element id="file-copy" path="$USER_HOME$/Downloads/jaxrs-ri-4/lib/jersey-common.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/commons-dbutils-1.1.jar" />
         </element>
       </element>
     </root>
