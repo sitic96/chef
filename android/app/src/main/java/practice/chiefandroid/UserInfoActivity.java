@@ -9,13 +9,12 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
-public class FavListActivity extends AppCompatActivity {
+public class UserInfoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fav_list);
-
+        setContentView(R.layout.activity_user_info);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -29,4 +28,11 @@ public class FavListActivity extends AppCompatActivity {
         });
     }
 
+    public void TextViewClicked(View view) {
+        ViewSwitcher switcher = (ViewSwitcher) findViewById(R.id.my_switcher);
+        switcher.showNext(); //or switcher.showPrevious();
+        TextView myTV = (TextView) switcher.findViewById(R.id.clickable_text_view);
+        TextView newVal = (TextView) switcher.findViewById(R.id.hidden_edit_view) ;
+        myTV.setText(newVal.getText());
+    }
 }

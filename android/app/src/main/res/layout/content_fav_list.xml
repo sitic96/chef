@@ -13,4 +13,6 @@
     tools:context="practice.chiefandroid.FavListActivity"
     tools:showIn="@layout/activity_fav_list">
 
+
+
 </RelativeLayout>
