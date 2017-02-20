@@ -29,10 +29,17 @@ public class UserInfoActivity extends AppCompatActivity {
     }
 
     public void TextViewClicked(View view) {
-        ViewSwitcher switcher = (ViewSwitcher) findViewById(R.id.my_switcher);
-        switcher.showNext(); //or switcher.showPrevious();
-        TextView myTV = (TextView) switcher.findViewById(R.id.clickable_text_view);
-        TextView newVal = (TextView) switcher.findViewById(R.id.hidden_edit_view) ;
-        myTV.setText(newVal.getText());
+        ViewSwitcher nameSwitcher = (ViewSwitcher) findViewById(R.id.name_switcher);
+        ViewSwitcher lastNameSwitcher = (ViewSwitcher) findViewById(R.id.lastName_switcher);
+        ViewSwitcher buttonSwitcher = (ViewSwitcher) findViewById(R.id.button_switcher);
+        nameSwitcher.showNext();
+        lastNameSwitcher.showNext();
+        buttonSwitcher.showNext();
+        TextView nameTextView = (TextView) nameSwitcher.findViewById(R.id.label_name);
+        TextView editNameTextView = (TextView) nameSwitcher.findViewById(R.id.edit_name);
+        TextView lastNameTextView = (TextView) lastNameSwitcher.findViewById(R.id.label_secondName);
+        TextView editLastNameTextView = (TextView) lastNameSwitcher.findViewById(R.id.edit_lastName);
+        lastNameTextView.setText(editLastNameTextView.getText());
+        nameTextView.setText(editNameTextView.getText());
     }
 }
