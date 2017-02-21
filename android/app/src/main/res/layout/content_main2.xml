@@ -1,48 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical">
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:text="Stupid button!" />
-
+    android:orientation="vertical"
+    android:padding="10dp">
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:text=""
         android:textSize="40dp" />
 
-    <TextView
-        android:id="@+id/recipe"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello world!" />
+        android:padding="5dp">
 
-    <Button
-        android:id="@+id/visibility"
+        <ImageButton
+            android:id="@+id/favorite_button"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="false"
+            android:layout_centerHorizontal="true"
+            android:background="#00ffffff"
+            android:visibility="gone"
+            android:src="@android:drawable/btn_star" />
+
+        <TextView
+            android:id="@+id/recipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="" />
+    </LinearLayout>
+
+    <ViewSwitcher xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/button_switcher"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:onClick="ShowList"
-        android:text="Show recipe" />
+        android:visibility="gone"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/showIngredients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:onClick="ShowList"
+            android:text="Ингредиенты:" />
+        <Button
+            android:id="@+id/hideIngredients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:onClick="HideList"
+            android:text="Скрыть:" />
+    </ViewSwitcher>
 
     <ListView
         android:id="@+id/lvMain"
         android:layout_width="match_parent"
-        android:layout_height="212dp"
-        android:layout_weight="0.10"
+        android:layout_height="wrap_content"
         android:visibility="gone" />
 
 
     <Button
         android:id="@+id/button"
 
-        android:layout_width="80dp"
+        android:layout_width="wrap_content"
         android:layout_height="33dp"
 
         android:background="@drawable/main_button"
@@ -50,12 +75,12 @@
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="5"
-        android:text="Fetch"
+        android:text="Получить рецепт"
         android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/recipeText"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0.19" />
-</LinearLayout><!--</LinearLayout>-->
+</LinearLayout>

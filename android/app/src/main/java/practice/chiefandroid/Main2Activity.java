@@ -18,8 +18,10 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.ViewSwitcher;
 
 import practice.chiefandroid.connect.ChiefService;
 import practice.chiefandroid.dao.Ingredient;
@@ -50,7 +52,7 @@ public class Main2Activity extends AppCompatActivity
         final Button button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(final View view) {
                 ChiefService chiefService = ChiefService.retrofit.create(ChiefService.class);
                 final Call<Recipe> call =
                         chiefService.recipe();
@@ -61,7 +63,10 @@ public class Main2Activity extends AppCompatActivity
                         Recipe recipe = response.body();
                         fillElements(recipe);
                         button.setVisibility(View.INVISIBLE);
-                        //getArray(list);
+                        ImageButton imageButton = (ImageButton) findViewById(R.id.favorite_button);
+                        ViewSwitcher viewSwitcher = (ViewSwitcher) findViewById(R.id.button_switcher);
+                        viewSwitcher.setVisibility(View.VISIBLE);
+                        imageButton.setVisibility(View.VISIBLE);
                     }
 
                     @Override
@@ -144,6 +149,16 @@ public class Main2Activity extends AppCompatActivity
 
     public void ShowList(View view) {
         ListView listView = (ListView) findViewById(R.id.lvMain);
+        ViewSwitcher viewSwitcher = (ViewSwitcher) findViewById(R.id.button_switcher);
         listView.setVisibility(View.VISIBLE);
+        viewSwitcher.showNext();
+    }
+
+
+    public void HideList(View view) {
+        ListView listView = (ListView) findViewById(R.id.lvMain);
+        ViewSwitcher viewSwitcher = (ViewSwitcher) findViewById(R.id.button_switcher);
+        viewSwitcher.showNext();
+        listView.setVisibility(View.GONE);
     }
 }
