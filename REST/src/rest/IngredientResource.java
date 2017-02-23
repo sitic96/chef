@@ -1,7 +1,6 @@
 package rest;
 
 import db.DBWorker;
-import entity.Entity;
 import entity.Ingredient;
 
 import javax.ws.rs.*;

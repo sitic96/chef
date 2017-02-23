@@ -64,13 +64,6 @@ public class RecipeActivity extends AppCompatActivity {
         textView1.setText(recipe.getText());
     }
 
-//    protected void getArray(List<Recipe> list) {
-//        //Recipe[] contributors = list.toArray(new Recipe[list.size()]);
-//        ListView lvMain = (ListView) findViewById(R.id.lvMain);
-//        ArrayAdapter<Recipe> adapter = new ArrayAdapter<Recipe>(this,
-//                android.R.layout.simple_list_item_1, list.toArray(new Recipe[list.size()]));
-//        lvMain.setAdapter(adapter);
-//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -81,9 +74,6 @@ public class RecipeActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
