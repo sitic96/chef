@@ -76,6 +76,41 @@ public class DBWorker {
         }
     }
 
+    public static List<Recipe> gerRecipesByIngredients(List<String> ingredients) {
+        StringBuilder sqlLine = new StringBuilder();
+        sqlLine.append("SELECT r.name as name, r.id as id, r.category as category, r.text as text \n" +
+                "FROM Recipes r\n" +
+                "  JOIN Rec_Ing rp ON rp.recipe = r.id\n" +
+                "  JOIN Ingredients ing ON ing.id = rp.ingredient\n" +
+                "WHERE ing.id IN (SELECT id\n" +
+                "                 FROM Ingredients\n" +
+                "                 WHERE name IN ( ");
+        for (int i = 0; i < ingredients.size(); i++) {
+            sqlLine.append("\"" + ingredients.get(i));
+            if (i + 1 < ingredients.size()) {
+                sqlLine.append("\", ");
+            } else {
+                sqlLine.append("\"");
+            }
+        }
+        sqlLine.append(" )) ");
+        sqlLine.append("GROUP BY r.id ");
+        sqlLine.append("HAVING count(ing.id) = " + ingredients.size() + ";");
+        QueryRunner queryRunner = new QueryRunner(Connector.getDataSource());
+        ResultSetHandler<List<Recipe>> resultSetHandler = new BeanListHandler<>(Recipe.class);
+        try {
+            List<Recipe> recipes = queryRunner.query(sqlLine.toString(), resultSetHandler);
+            for (Recipe recipe : recipes
+                    ) {
+                recipe.setIngredients(queryRunner.query("select * from Ingredients where id in (SELECT ingredient from Rec_Ing Rec_Ing WHERE recipe = " +
+                        recipe.getId() + " )", new BeanListHandler<>(Ingredient.class)));
+            }
+            return recipes;
+        } catch (SQLException e) {
+            throw new WebServiceException();
+        }
+    }
+
     public static List<Recipe> getAllRecipes(String table, String objName) {
         try {
             QueryRunner run = new QueryRunner(Connector.getDataSource());

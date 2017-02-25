@@ -54,4 +54,17 @@ public class RecipeResource {
     public void updateCategory(Recipe recipe) {
         DBWorker.updateRecipe(recipe.getId(), recipe.getName(), recipe.getText(), recipe.getCategory());
     }
+
+    @POST
+    @Path("/getbyingredients")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getRecipesByIngredients( List<String> ingredients) {
+        System.out.println("I was here!");
+        GenericEntity<List<Recipe>> genericEntity = new GenericEntity<List<Recipe>>(DBWorker.gerRecipesByIngredients(ingredients)) {
+
+        };
+        return Response.ok(genericEntity).build();
+    }
+
 }
