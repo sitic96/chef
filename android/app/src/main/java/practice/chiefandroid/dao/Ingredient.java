@@ -1,12 +1,13 @@
 package practice.chiefandroid.dao;
 
+import java.io.Serializable;
 import java.util.PriorityQueue;
 
 /**
  * Created by sitora on 07.02.17.
  */
 
-public class Ingredient {
+public class Ingredient implements Serializable{
 
     private Long id;
     private String name;

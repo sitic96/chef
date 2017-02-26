@@ -1,6 +1,7 @@
 package practice.chiefandroid.connect;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import practice.chiefandroid.dao.Recipe;
@@ -37,5 +38,5 @@ public interface ChiefService {
 //    }
 
     @POST("recipes/getbyingredients")
-    Call<List<Recipe>> recipes(@Body ArrayList<String> ingredients);
+    Call<List<Recipe>> recipes(@Body HashSet<String> ingredients);
 }

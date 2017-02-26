@@ -8,4 +8,5 @@
     <string name="title_activity_fav_list">FavListActivity</string>
     <string name="title_activity_user_info">UserInfoActivity</string>
     <string name="title_activity_search">SearchActivity</string>
+    <string name="title_activity_recipes_list">RecipesListActivity</string>
 </resources>
