@@ -1,11 +1,17 @@
 package practice.chiefandroid;
 
+import android.annotation.TargetApi;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -15,7 +21,11 @@ import java.util.List;
 import practice.chiefandroid.dao.Ingredient;
 import practice.chiefandroid.dao.Recipe;
 
+import static java.lang.Math.toIntExact;
+
 public class RecipesListActivity extends AppCompatActivity {
+
+    protected ArrayList<Recipe> recipes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +42,19 @@ public class RecipesListActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-        ArrayList<Recipe> recipes;
-        //Bundle bundle = getIntent().getParcelableArrayListExtra("recipes");
         recipes = getIntent().getParcelableArrayListExtra("recipes");
         fillRecipes(recipes);
+        ListView lv = (ListView) findViewById(R.id.resultList);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getBaseContext(), RecipeActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("recipe", recipes.get((int) id));
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
     }
 
     protected void fillRecipes(List<Recipe> recipes) {
