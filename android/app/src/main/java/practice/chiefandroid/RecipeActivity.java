@@ -19,40 +19,16 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RecipeActivity extends AppCompatActivity {
-protected Recipe recipe;
+    protected Recipe recipe;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipe);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        recipe =  getIntent().getParcelableExtra("recipe");
+        recipe = getIntent().getParcelableExtra("recipe");
         fillElements(recipe);
-//        final Button button = (Button) findViewById(R.id.button);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                ChiefService chiefService = ChiefService.retrofit.create(ChiefService.class);
-//                final Call<Recipe> call =
-//                        chiefService.recipe();
-//
-//                call.enqueue(new Callback<Recipe>() {
-//                    @Override
-//                    public void onResponse(Call<Recipe> call, Response<Recipe> response) {
-//                        Recipe recipe = response.body();
-//                        fillElements(recipe);
-//                        button.setVisibility(View.INVISIBLE);
-//                        //getArray(list);
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<Recipe> call, Throwable t) {
-//                        // final TextView textView = (TextView) findViewById(R.id.textView);
-//                        // textView.setText("Something went wrong: " + t.getMessage());
-//                    }
-//                });
-//            }
-//        });
     }
 
     protected void fillElements(Recipe recipe) {

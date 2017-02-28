@@ -1,5 +1,6 @@
 package practice.chiefandroid;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -15,10 +16,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
@@ -32,7 +35,8 @@ import retrofit2.Response;
 
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    protected DrawerLayout mDrawer;
+
+    protected Recipe recipe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,34 +53,8 @@ public class Main2Activity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        final Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View view) {
-                ChiefService chiefService = ChiefService.retrofit.create(ChiefService.class);
-                final Call<Recipe> call =
-                        chiefService.recipe();
-
-                call.enqueue(new Callback<Recipe>() {
-                    @Override
-                    public void onResponse(Call<Recipe> call, Response<Recipe> response) {
-                        Recipe recipe = response.body();
-                        fillElements(recipe);
-                        button.setVisibility(View.INVISIBLE);
-                        ImageButton imageButton = (ImageButton) findViewById(R.id.favorite_button);
-                        ViewSwitcher viewSwitcher = (ViewSwitcher) findViewById(R.id.button_switcher);
-                        viewSwitcher.setVisibility(View.VISIBLE);
-                        imageButton.setVisibility(View.VISIBLE);
-                    }
-
-                    @Override
-                    public void onFailure(Call<Recipe> call, Throwable t) {
-                        // final TextView textView = (TextView) findViewById(R.id.textView);
-                        // textView.setText("Something went wrong: " + t.getMessage());
-                    }
-                });
-            }
-        });
+        recipe = getIntent().getParcelableExtra("recipe");
+        fillElements(recipe);
     }
 
     protected void fillElements(Recipe recipe) {
@@ -86,8 +64,13 @@ public class Main2Activity extends AppCompatActivity
         ArrayAdapter<Ingredient> adapter = new ArrayAdapter<Ingredient>(this,
                 android.R.layout.simple_list_item_1, recipe.getIngredients().toArray(new Ingredient[recipe.getIngredients().size()]));
         lvMain.setAdapter(adapter);
+        setListViewHeightBasedOnChildren(lvMain);
         textView.setText(recipe.getName());
         textView1.setText(recipe.getText());
+        ImageButton imageButton = (ImageButton) findViewById(R.id.favorite_button);
+        ViewSwitcher viewSwitcher = (ViewSwitcher) findViewById(R.id.button_switcher);
+        viewSwitcher.setVisibility(View.VISIBLE);
+        imageButton.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -128,8 +111,9 @@ public class Main2Activity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
+        if (id == R.id.search) {
+            Intent myIntent = new Intent(getBaseContext(), SearchActivity.class);
+            startActivity(myIntent);
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
@@ -154,11 +138,31 @@ public class Main2Activity extends AppCompatActivity
         viewSwitcher.showNext();
     }
 
-
     public void HideList(View view) {
         ListView listView = (ListView) findViewById(R.id.lvMain);
         ViewSwitcher viewSwitcher = (ViewSwitcher) findViewById(R.id.button_switcher);
         viewSwitcher.showNext();
         listView.setVisibility(View.GONE);
+    }
+
+    public static void setListViewHeightBasedOnChildren(ListView listView) {
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null)
+            return;
+
+        int desiredWidth = View.MeasureSpec.makeMeasureSpec(listView.getWidth(), View.MeasureSpec.UNSPECIFIED);
+        int totalHeight = 0;
+        View view = null;
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            view = listAdapter.getView(i, view, listView);
+            if (i == 0)
+                view.setLayoutParams(new ViewGroup.LayoutParams(desiredWidth, DrawerLayout.LayoutParams.WRAP_CONTENT));
+
+            view.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+            totalHeight += view.getMeasuredHeight();
+        }
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+        listView.setLayoutParams(params);
     }
 }

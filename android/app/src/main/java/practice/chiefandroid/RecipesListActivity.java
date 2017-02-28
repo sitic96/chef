@@ -48,7 +48,7 @@ public class RecipesListActivity extends AppCompatActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getBaseContext(), RecipeActivity.class);
+                Intent intent = new Intent(getBaseContext(), Main2Activity.class);
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("recipe", recipes.get((int) id));
                 intent.putExtras(bundle);

@@ -10,10 +10,10 @@
     tools:openDrawer="start">
 
     <include
+        android:id="@+id/menu"
         layout="@layout/app_bar_main2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/menu" />
+        android:layout_height="match_parent" />
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
