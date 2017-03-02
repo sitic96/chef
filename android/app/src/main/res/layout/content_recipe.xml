@@ -31,7 +31,8 @@
                 android:layout_centerHorizontal="true"
                 android:background="#00ffffff"
                 android:src="@android:drawable/btn_star"
-                android:visibility="gone" />
+                android:visibility="gone"
+                android:onClick="starClick"/>
 
             <TextView
                 android:id="@+id/recipe"

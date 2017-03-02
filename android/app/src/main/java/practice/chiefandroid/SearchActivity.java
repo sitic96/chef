@@ -8,7 +8,6 @@ import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -19,8 +18,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-import practice.chiefandroid.connect.ChiefService;
-import practice.chiefandroid.connect.IngredientService;
+import practice.chiefandroid.services.ChiefService;
+import practice.chiefandroid.services.IngredientService;
 import practice.chiefandroid.dao.Ingredient;
 import practice.chiefandroid.dao.Recipe;
 import retrofit2.Call;
@@ -61,16 +60,16 @@ public class SearchActivity extends AppCompatActivity {
 
 //    protected void getRecipesByIngredients(ArrayList<String> ingredients) {
 //        ChiefService chiefService = ChiefService.retrofit.create(ChiefService.class);
-//        final Call<List<Recipe>> call =
+//        final Call<List<RecipeActivity>> call =
 //                chiefService.recipes(ingredients);
-//        call.enqueue(new Callback<List<Recipe>>() {
+//        call.enqueue(new Callback<List<RecipeActivity>>() {
 //            @Override
-//            public void onResponse(Call<List<Recipe>> call, Response<List<Recipe>> response) {
-//                List<Recipe> recipe = response.body();
+//            public void onResponse(Call<List<RecipeActivity>> call, Response<List<RecipeActivity>> response) {
+//                List<RecipeActivity> recipe = response.body();
 //            }
 //
 //            @Override
-//            public void onFailure(Call<List<Recipe>> call, Throwable t) {
+//            public void onFailure(Call<List<RecipeActivity>> call, Throwable t) {
 //
 //            }
 //        });

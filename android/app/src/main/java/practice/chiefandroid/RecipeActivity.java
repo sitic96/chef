@@ -19,18 +19,19 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
-import practice.chiefandroid.dao.Ingredient;
-import practice.chiefandroid.dao.Recipe;
 
-public class Main2Activity extends AppCompatActivity
+import practice.chiefandroid.dao.Ingredient;
+import practice.chiefandroid.data.SaveRecipes;
+
+public class RecipeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    protected Recipe recipe;
+    protected practice.chiefandroid.dao.Recipe recipe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_recipe);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -46,7 +47,7 @@ public class Main2Activity extends AppCompatActivity
         fillElements(recipe);
     }
 
-    protected void fillElements(Recipe recipe) {
+    protected void fillElements(practice.chiefandroid.dao.Recipe recipe) {
         final TextView textView = (TextView) findViewById(R.id.recipe);
         final TextView textView1 = (TextView) findViewById(R.id.recipeText);
         ListView lvMain = (ListView) findViewById(R.id.lvMain);
@@ -103,8 +104,9 @@ public class Main2Activity extends AppCompatActivity
         if (id == R.id.search) {
             Intent myIntent = new Intent(getBaseContext(), SearchActivity.class);
             startActivity(myIntent);
-        } else if (id == R.id.nav_gallery) {
-
+        } else if (id == R.id.fav) {
+            Intent myIntent = new Intent(getBaseContext(), FavListActivity.class);
+            startActivity(myIntent);
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
@@ -153,5 +155,9 @@ public class Main2Activity extends AppCompatActivity
         ViewGroup.LayoutParams params = listView.getLayoutParams();
         params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
         listView.setLayoutParams(params);
+    }
+
+    public void starClick(View view) {
+        SaveRecipes.saveRecipe(this, recipe);
     }
 }
