@@ -1,6 +1,7 @@
 package practice.chiefandroid;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -158,6 +159,6 @@ public class RecipeActivity extends AppCompatActivity
     }
 
     public void starClick(View view) {
-        SaveRecipes.saveRecipe(this, recipe);
+        SaveRecipes.saveRecipe(recipe);
     }
 }

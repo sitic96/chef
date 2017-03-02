@@ -1,5 +1,6 @@
 package practice.chiefandroid;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,12 +28,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SearchActivity extends AppCompatActivity {
+    public static Context contextOfApplication;
     private List<Ingredient> ingredients;
     private static int newSpinnerPosition = 2;
     protected HashSet<Integer> spinnersIds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        contextOfApplication = getApplicationContext();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         getAllCategories();
@@ -50,31 +53,7 @@ public class SearchActivity extends AppCompatActivity {
         spinnersIds = new HashSet<>();
         spinnersIds.add(R.id.ingredients);
 
-//
-//        ArrayList<String> ingredients = new ArrayList<>();
-//        ingredients.add("Соль");
-//        ingredients.add("Вода");
-//        getRecipesByIngredients(ingredients);
-
     }
-
-//    protected void getRecipesByIngredients(ArrayList<String> ingredients) {
-//        ChiefService chiefService = ChiefService.retrofit.create(ChiefService.class);
-//        final Call<List<RecipeActivity>> call =
-//                chiefService.recipes(ingredients);
-//        call.enqueue(new Callback<List<RecipeActivity>>() {
-//            @Override
-//            public void onResponse(Call<List<RecipeActivity>> call, Response<List<RecipeActivity>> response) {
-//                List<RecipeActivity> recipe = response.body();
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<RecipeActivity>> call, Throwable t) {
-//
-//            }
-//        });
-//    }
-
     protected void getAllCategories() {
         final IngredientService ingredientService = IngredientService.retrofit.create(IngredientService.class);
         final Call<List<Ingredient>> call =
@@ -137,5 +116,9 @@ public class SearchActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public static Context getContextOfApplication(){
+        return contextOfApplication;
     }
 }

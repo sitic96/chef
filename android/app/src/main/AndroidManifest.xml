@@ -13,14 +13,11 @@
         <activity
             android:name=".RecipeActivity"
             android:label="Рецепт"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".FavListActivity"
             android:label="@string/title_activity_fav_list"
-            android:theme="@style/AppTheme">
-
-        </activity>
+            android:theme="@style/AppTheme"></activity>
         <activity
             android:name=".UserInfoActivity"
             android:label="@string/title_activity_user_info"
@@ -38,7 +35,7 @@
         <activity
             android:name=".RecipesListActivity"
             android:label="@string/title_activity_recipes_list"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

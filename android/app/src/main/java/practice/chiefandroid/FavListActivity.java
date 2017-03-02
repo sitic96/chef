@@ -37,9 +37,9 @@ private List<Recipe> recipes;
             }
         });
 
-        recipes = SaveRecipes.getRecipes(this);
+        recipes = SaveRecipes.getRecipes();
         fillRecipes(recipes);
-        ListView lv = (ListView) findViewById(R.id.resultList);
+        ListView lv = (ListView) findViewById(R.id.favList);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -52,7 +52,7 @@ private List<Recipe> recipes;
         });
     }
     protected void fillRecipes(List<practice.chiefandroid.dao.Recipe> recipes) {
-        ListView resultList = (ListView) findViewById(R.id.resultList);
+        ListView resultList = (ListView) findViewById(R.id.favList);
         ArrayAdapter<Recipe> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1,
                 recipes.toArray(new practice.chiefandroid.dao.Recipe[recipes.size()]));
