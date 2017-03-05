@@ -10,11 +10,16 @@ import Foundation
 import SwiftyJSON
 
 class UserObject {
-    var pictureURL: String!
-    var username: String!
+    var category: Int16
+    var id: Int16
+    var name :String!
+    var text :String!
+    
     
     required init(json: JSON) {
-        pictureURL = json["picture"]["medium"].stringValue
-        username = json["email"].stringValue
+        category = json["category"].int16Value
+        id = json["id"].int16Value
+        name = json["name"].stringValue
+        text = json["text"].stringValue
     }
 }

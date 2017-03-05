@@ -29,8 +29,8 @@ class SecondViewController:UIViewController, UITableViewDataSource, UITableViewD
     
     func addDummyData() {
         RestApiManager.sharedInstance.getRandomUser { (json: JSON) in
-            if let results = json["results"].array {
-                for entry in results {
+            if let results = json["ingredients"].array {
+               for entry in results {
                     self.items.append(UserObject(json: entry))
                 }
                 DispatchQueue.main.async(execute: {
@@ -52,12 +52,12 @@ class SecondViewController:UIViewController, UITableViewDataSource, UITableViewD
         }
         let user = self.items[indexPath.row]
         
-        if let url = NSURL(string: user.pictureURL) {
+        if let url = NSURL(string: user.name) {
             if let data = NSData(contentsOf: url as URL) {
                 cell?.imageView?.image = UIImage(data: data as Data)
             }
         }
-        cell!.textLabel?.text = user.username
+        cell!.textLabel?.text = user.name
         return cell!
     }
 }
