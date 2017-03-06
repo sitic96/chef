@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		0B0E045FC4AC6AA485146332 /* Pods_Chief.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CCE6AB3155073BF19AF6660 /* Pods_Chief.framework */; };
 		4923EC161E6B5AB600A9F673 /* RestApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4923EC151E6B5AB600A9F673 /* RestApiManager.swift */; };
-		4923EC181E6B5C1D00A9F673 /* UserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4923EC171E6B5C1D00A9F673 /* UserObject.swift */; };
+		4923EC181E6B5C1D00A9F673 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4923EC171E6B5C1D00A9F673 /* Recipe.swift */; };
+		4996B7A71E6DFA8300974FF6 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4996B7A61E6DFA8300974FF6 /* Ingredient.swift */; };
 		49AB83B51E6B35E3007B9180 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AB83B41E6B35E3007B9180 /* AppDelegate.swift */; };
 		49AB83B71E6B35E3007B9180 /* FavoriteRecipesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AB83B61E6B35E3007B9180 /* FavoriteRecipesController.swift */; };
 		49AB83B91E6B35E3007B9180 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AB83B81E6B35E3007B9180 /* SecondViewController.swift */; };
@@ -40,7 +41,8 @@
 /* Begin PBXFileReference section */
 		2CCE6AB3155073BF19AF6660 /* Pods_Chief.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chief.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4923EC151E6B5AB600A9F673 /* RestApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestApiManager.swift; sourceTree = "<group>"; };
-		4923EC171E6B5C1D00A9F673 /* UserObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserObject.swift; path = ../UserObject.swift; sourceTree = "<group>"; };
+		4923EC171E6B5C1D00A9F673 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Recipe.swift; path = ../Recipe.swift; sourceTree = "<group>"; };
+		4996B7A61E6DFA8300974FF6 /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		49AB83B11E6B35E3007B9180 /* Chief.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chief.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AB83B41E6B35E3007B9180 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49AB83B61E6B35E3007B9180 /* FavoriteRecipesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipesController.swift; sourceTree = "<group>"; };
@@ -85,6 +87,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4996B7A51E6DFA5A00974FF6 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				4923EC171E6B5C1D00A9F673 /* Recipe.swift */,
+				4996B7A61E6DFA8300974FF6 /* Ingredient.swift */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+		4996B7A81E6DFB3200974FF6 /* REST */ = {
+			isa = PBXGroup;
+			children = (
+				4923EC151E6B5AB600A9F673 /* RestApiManager.swift */,
+			);
+			name = REST;
+			sourceTree = "<group>";
+		};
 		49AB83A81E6B35E3007B9180 = {
 			isa = PBXGroup;
 			children = (
@@ -110,8 +129,8 @@
 		49AB83B31E6B35E3007B9180 /* Chief */ = {
 			isa = PBXGroup;
 			children = (
-				4923EC151E6B5AB600A9F673 /* RestApiManager.swift */,
-				4923EC171E6B5C1D00A9F673 /* UserObject.swift */,
+				4996B7A81E6DFB3200974FF6 /* REST */,
+				4996B7A51E6DFA5A00974FF6 /* Objects */,
 				49AB83B41E6B35E3007B9180 /* AppDelegate.swift */,
 				49AB83B61E6B35E3007B9180 /* FavoriteRecipesController.swift */,
 				49AB83B81E6B35E3007B9180 /* SecondViewController.swift */,
@@ -346,8 +365,9 @@
 			files = (
 				49AB83B91E6B35E3007B9180 /* SecondViewController.swift in Sources */,
 				49AB83B51E6B35E3007B9180 /* AppDelegate.swift in Sources */,
+				4996B7A71E6DFA8300974FF6 /* Ingredient.swift in Sources */,
 				4923EC161E6B5AB600A9F673 /* RestApiManager.swift in Sources */,
-				4923EC181E6B5C1D00A9F673 /* UserObject.swift in Sources */,
+				4923EC181E6B5C1D00A9F673 /* Recipe.swift in Sources */,
 				49AB83B71E6B35E3007B9180 /* FavoriteRecipesController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

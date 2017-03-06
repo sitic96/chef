@@ -1,5 +1,5 @@
 //
-//  UserObject.swift
+//  Recipe.swift
 //  Chief
 //
 //  Created by Sitora on 04.03.17.
@@ -9,7 +9,8 @@
 import Foundation
 import SwiftyJSON
 
-class UserObject {
+class Recipe {
+    var ingredients = [Ingredient]()
     var category: Int16
     var id: Int16
     var name :String!
@@ -17,6 +18,11 @@ class UserObject {
     
     
     required init(json: JSON) {
+        if let results = json["ingredients"].array {
+            for entry in results {
+                self.ingredients.append(Ingredient(json: entry))
+            }
+        }
         category = json["category"].int16Value
         id = json["id"].int16Value
         name = json["name"].stringValue

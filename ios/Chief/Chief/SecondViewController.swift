@@ -11,7 +11,7 @@ import SwiftyJSON
 class SecondViewController:UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var tableView: UITableView!
-    var items = [UserObject]()
+    var items = [Recipe]()
     
     override func viewWillAppear(_ animated: Bool) {
         let frame:CGRect = CGRect(x: 0, y: 100, width: self.view.frame.width, height: self.view.frame.height-100)
@@ -29,14 +29,14 @@ class SecondViewController:UIViewController, UITableViewDataSource, UITableViewD
     
     func addDummyData() {
         RestApiManager.sharedInstance.getRandomUser { (json: JSON) in
-            if let results = json["ingredients"].array {
-               for entry in results {
-                    self.items.append(UserObject(json: entry))
-                }
+//            if let results = json.array {
+//               for entry in results {
+                    self.items.append(Recipe(json: json))
+             //   }
                 DispatchQueue.main.async(execute: {
                     self.tableView.reloadData()
                 })
-            }
+           // }
         }
     }
     
@@ -61,18 +61,4 @@ class SecondViewController:UIViewController, UITableViewDataSource, UITableViewD
         return cell!
     }
 }
-//UIViewController {
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        // Do any additional setup after loading the view, typically from a nib.
-//    }
-//
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//        // Dispose of any resources that can be recreated.
-//    }
-//
-//
-//}
 
