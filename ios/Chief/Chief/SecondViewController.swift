@@ -10,10 +10,15 @@ import SwiftyJSON
 
 class SecondViewController:UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet
+    var nameLabel: UILabel!
+    @IBOutlet
     var tableView: UITableView!
-    var items = [Recipe]()
+   // var items = [Recipe]()
+    var recipe :Recipe!
     
     override func viewWillAppear(_ animated: Bool) {
+        recipe = Recipe()
         let frame:CGRect = CGRect(x: 0, y: 100, width: self.view.frame.width, height: self.view.frame.height-100)
         self.tableView = UITableView(frame: frame)
         self.tableView.dataSource = self
@@ -29,19 +34,17 @@ class SecondViewController:UIViewController, UITableViewDataSource, UITableViewD
     
     func addDummyData() {
         RestApiManager.sharedInstance.getRandomUser { (json: JSON) in
-//            if let results = json.array {
-//               for entry in results {
-                    self.items.append(Recipe(json: json))
-             //   }
+
+            self.recipe = Recipe(json: json)
+            self.nameLabel.text=self.recipe.name;
                 DispatchQueue.main.async(execute: {
                     self.tableView.reloadData()
                 })
-           // }
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items.count;
+        return self.recipe.ingredients.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -50,7 +53,7 @@ class SecondViewController:UIViewController, UITableViewDataSource, UITableViewD
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "CELL")
         }
-        let user = self.items[indexPath.row]
+        let user = self.recipe.ingredients[indexPath.row]
         
         if let url = NSURL(string: user.name) {
             if let data = NSData(contentsOf: url as URL) {

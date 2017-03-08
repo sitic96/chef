@@ -23,9 +23,18 @@ class Recipe {
                 self.ingredients.append(Ingredient(json: entry))
             }
         }
+        
         category = json["category"].int16Value
         id = json["id"].int16Value
         name = json["name"].stringValue
         text = json["text"].stringValue
+    }
+    
+    init() {
+        category = Int16()
+        id = Int16()
+        name = String()
+        text=String()
+        ingredients = [Ingredient]()
     }
 }
