@@ -10,20 +10,24 @@ import SwiftyJSON
 
 class SecondViewController:UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet
-    var nameLabel: UILabel!
-    @IBOutlet
-    var tableView: UITableView!
-   // var items = [Recipe]()
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var tableView: UITableView!
+    
     var recipe :Recipe!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         recipe = Recipe()
-        let frame:CGRect = CGRect(x: 0, y: 100, width: self.view.frame.width, height: self.view.frame.height-100)
-        self.tableView = UITableView(frame: frame)
+//        let frame:CGRect = CGRect(x: 0, y: 100, width: self.view.frame.width, height: self.view.frame.height-100)
+//        self.tableView = UITableView(frame: frame)
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.view.addSubview(self.tableView)
+        tableView.tableFooterView = UIView()
         
         let btn = UIButton(frame: CGRect(x: 0, y: 25, width: self.view.frame.width, height: 50))
         btn.backgroundColor = UIColor.cyan
@@ -32,15 +36,16 @@ class SecondViewController:UIViewController, UITableViewDataSource, UITableViewD
         self.view.addSubview(btn)
     }
     
-    func addDummyData() {
+    @IBAction func addDummyData() {
         RestApiManager.sharedInstance.getRandomUser { (json: JSON) in
 
             self.recipe = Recipe(json: json)
-            self.nameLabel.text=self.recipe.name;
                 DispatchQueue.main.async(execute: {
                     self.tableView.reloadData()
                 })
         }
+        self.nameLabel.text=self.recipe.name;
+        self.nameLabel.sizeToFit()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
