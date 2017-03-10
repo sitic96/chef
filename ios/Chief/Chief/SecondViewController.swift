@@ -11,7 +11,10 @@ import SwiftyJSON
 class SecondViewController:UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var tableView: UITableView!
+    var tableView: UITableView!
+    var hidden:Bool?=false
+    
+    @IBOutlet var showHideButton: UIButton!
     
     var recipe :Recipe!
     
@@ -20,20 +23,32 @@ class SecondViewController:UIViewController, UITableViewDataSource, UITableViewD
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    @IBAction func hideShowButtonClicked(_ sender: UIButton) {
+        if hidden!{
+            tableView.isHidden=false
+            hidden=false
+        }
+        else{
+            tableView.isHidden=true
+            hidden=true
+        }
+    }
     override func viewWillAppear(_ animated: Bool) {
         recipe = Recipe()
-//        let frame:CGRect = CGRect(x: 0, y: 100, width: self.view.frame.width, height: self.view.frame.height-100)
-//        self.tableView = UITableView(frame: frame)
+        let frame:CGRect = CGRect(x: 0, y: 150, width: self.view.frame.width, height: self.view.frame.height)
+        self.tableView = UITableView(frame: frame)
         self.tableView.dataSource = self
+        self.tableView.rowHeight = UITableViewAutomaticDimension;
         self.tableView.delegate = self
         self.view.addSubview(self.tableView)
-        tableView.tableFooterView = UIView()
         
-        let btn = UIButton(frame: CGRect(x: 0, y: 25, width: self.view.frame.width, height: 50))
+        let btn = UIButton(frame: CGRect(x: 0, y: 25, width: self.view.frame.width, height: 20))
         btn.backgroundColor = UIColor.cyan
         btn.setTitle("Add new Dummy", for: UIControlState.normal)
         btn.addTarget(self, action: #selector(SecondViewController.addDummyData), for: UIControlEvents.touchUpInside)
         self.view.addSubview(btn)
+        
+        showHideButton.setTitleColor(UIColor.black, for: .normal)
     }
     
     @IBAction func addDummyData() {
@@ -42,6 +57,7 @@ class SecondViewController:UIViewController, UITableViewDataSource, UITableViewD
             self.recipe = Recipe(json: json)
                 DispatchQueue.main.async(execute: {
                     self.tableView.reloadData()
+                    self.tableView.rowHeight = UITableViewAutomaticDimension;
                 })
         }
         self.nameLabel.text=self.recipe.name;

@@ -14,7 +14,7 @@ typealias ServiceResponse = (JSON, NSError?) -> Void
 class RestApiManager: NSObject {
     static let sharedInstance = RestApiManager()
     
-    let baseURL = "http://localhost:8080/rest/recipes/55"
+    let baseURL = "http://localhost:8080/rest/recipes/28"
     
     func getRandomUser(onCompletion: @escaping (JSON) -> Void) {
         let route = baseURL

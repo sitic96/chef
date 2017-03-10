@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -61,31 +62,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIy-aO-6lz">
-                                <rect key="frame" x="27" y="110" width="273" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4aV-gk-dIl">
-                                <rect key="frame" x="16" y="244" width="288" height="176"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZRP-1F-bvQ">
-                                <rect key="frame" x="27" y="181" width="101" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Ингредиенты:"/>
-                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iSO-yN-S25">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="530"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIy-aO-6lz">
+                                        <rect key="frame" x="8" y="28" width="304" height="72"/>
+                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voB-iK-HfG">
+                                        <rect key="frame" x="139" y="464" width="42" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZRP-1F-bvQ">
+                                        <rect key="frame" x="8" y="108" width="101" height="30"/>
+                                        <state key="normal" title="Ингредиенты:"/>
+                                        <connections>
+                                            <action selector="hideShowButtonClicked:" destination="8rJ-Kc-sve" eventType="touchDown" id="tD7-Uw-aDD"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="BIy-aO-6lz" firstAttribute="top" secondItem="iSO-yN-S25" secondAttribute="top" constant="61" id="EWw-gd-ftd"/>
+                                    <constraint firstAttribute="bottom" secondItem="BIy-aO-6lz" secondAttribute="bottom" constant="421" id="Igs-P7-4F8"/>
+                                    <constraint firstItem="ZRP-1F-bvQ" firstAttribute="top" secondItem="iSO-yN-S25" secondAttribute="top" constant="70" id="Zs9-Fo-sYh"/>
+                                    <constraint firstItem="BIy-aO-6lz" firstAttribute="centerY" secondItem="ZRP-1F-bvQ" secondAttribute="centerY" id="cHT-t4-822"/>
+                                    <constraint firstAttribute="trailing" secondItem="BIy-aO-6lz" secondAttribute="trailing" constant="190" id="ftt-8d-QMa"/>
+                                    <constraint firstItem="BIy-aO-6lz" firstAttribute="leading" secondItem="iSO-yN-S25" secondAttribute="leadingMargin" id="jr9-Ea-Rf5"/>
+                                    <constraint firstItem="BIy-aO-6lz" firstAttribute="centerX" secondItem="ZRP-1F-bvQ" secondAttribute="centerX" id="wHf-QR-JgJ"/>
+                                    <constraint firstItem="ZRP-1F-bvQ" firstAttribute="leading" secondItem="iSO-yN-S25" secondAttribute="leading" constant="19" id="wrp-vW-bA7"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="iSO-yN-S25" secondAttribute="trailing" id="krY-ux-HDV"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="iSO-yN-S25" secondAttribute="bottom" constant="38" id="mML-YI-21p"/>
+                            <constraint firstItem="iSO-yN-S25" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="rik-ru-Azx"/>
+                            <constraint firstItem="iSO-yN-S25" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="znK-GL-G39"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="nameLabel" destination="BIy-aO-6lz" id="MiK-8T-xZw"/>
-                        <outlet property="tableView" destination="4aV-gk-dIl" id="lpl-ZF-aYW"/>
-                        <outlet property="view" destination="ZRP-1F-bvQ" id="f9b-sU-so3"/>
+                        <outlet property="showHideButton" destination="ZRP-1F-bvQ" id="Sz1-BV-rvQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
