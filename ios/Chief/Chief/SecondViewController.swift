@@ -9,10 +9,11 @@ import UIKit
 import SwiftyJSON
 
 class SecondViewController:UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    @IBOutlet var nameLabel: UILabel!
-    var tableView: UITableView!
+  //  var tableView: UITableView!
     var hidden:Bool?=false
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var textLabel: UILabel!
+    @IBOutlet var tableView: UITableView!
     
     @IBOutlet var showHideButton: UIButton!
     
@@ -22,7 +23,6 @@ class SecondViewController:UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-    
     @IBAction func hideShowButtonClicked(_ sender: UIButton) {
         if hidden!{
             tableView.isHidden=false
@@ -37,10 +37,10 @@ class SecondViewController:UIViewController, UITableViewDataSource, UITableViewD
         recipe = Recipe()
         let frame:CGRect = CGRect(x: 0, y: 150, width: self.view.frame.width, height: self.view.frame.height)
         self.tableView = UITableView(frame: frame)
-        self.tableView.dataSource = self
-        self.tableView.rowHeight = UITableViewAutomaticDimension;
-        self.tableView.delegate = self
-        self.view.addSubview(self.tableView)
+        tableView.dataSource = self
+        tableView.rowHeight = UITableViewAutomaticDimension;
+        tableView.delegate = self
+        self.view.(self.tableView)
         
         let btn = UIButton(frame: CGRect(x: 0, y: 25, width: self.view.frame.width, height: 20))
         btn.backgroundColor = UIColor.cyan
@@ -53,12 +53,11 @@ class SecondViewController:UIViewController, UITableViewDataSource, UITableViewD
     
     @IBAction func addDummyData() {
         RestApiManager.sharedInstance.getRandomUser { (json: JSON) in
-
             self.recipe = Recipe(json: json)
-                DispatchQueue.main.async(execute: {
-                    self.tableView.reloadData()
-                    self.tableView.rowHeight = UITableViewAutomaticDimension;
-                })
+            DispatchQueue.main.async(execute: {
+                self.tableView.reloadData()
+                self.tableView.rowHeight = UITableViewAutomaticDimension;
+            })
         }
         self.nameLabel.text=self.recipe.name;
         self.nameLabel.sizeToFit()
