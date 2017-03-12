@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Chief/MyTable.swift">
+   </FileRef>
+   <FileRef
       location = "group:Chief.xcodeproj">
    </FileRef>
    <FileRef

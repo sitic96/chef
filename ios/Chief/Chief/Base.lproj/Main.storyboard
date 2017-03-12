@@ -62,24 +62,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KtX-kO-HoH">
-                                <rect key="frame" x="0.0" y="2" width="101" height="110"/>
+                                <rect key="frame" x="0.0" y="2" width="101" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MUk-HM-Am2">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yx8-bA-oYD">
                                         <rect key="frame" x="0.0" y="0.0" width="101" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="btnClicked:" destination="8rJ-Kc-sve" eventType="touchDown" id="475-KX-ZIP"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MUk-HM-Am2">
+                                        <rect key="frame" x="0.0" y="40" width="101" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ckY-oR-e7E">
-                                        <rect key="frame" x="0.0" y="40" width="101" height="30"/>
+                                        <rect key="frame" x="0.0" y="80" width="101" height="30"/>
                                         <state key="normal" title="Ингредиенты:"/>
                                         <connections>
                                             <action selector="hideShowButtonClicked:" destination="8rJ-Kc-sve" eventType="touchDown" id="Hsd-kE-Vyf"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vV3-NA-A4h">
-                                        <rect key="frame" x="0.0" y="80" width="101" height="30"/>
+                                        <rect key="frame" x="0.0" y="120" width="101" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -93,6 +100,7 @@
                     <connections>
                         <outlet property="nameLabel" destination="MUk-HM-Am2" id="Nyl-eH-bbn"/>
                         <outlet property="showHideButton" destination="ckY-oR-e7E" id="eRi-dD-wo1"/>
+                        <outlet property="stackView" destination="KtX-kO-HoH" id="8a1-5u-ruj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
