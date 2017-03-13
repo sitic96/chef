@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -52,6 +53,7 @@
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
                 <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="Chief" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
@@ -61,49 +63,79 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KtX-kO-HoH">
-                                <rect key="frame" x="0.0" y="2" width="101" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ST-Jt-g5N">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="521"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yx8-bA-oYD">
-                                        <rect key="frame" x="0.0" y="0.0" width="101" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                        <connections>
-                                            <action selector="btnClicked:" destination="8rJ-Kc-sve" eventType="touchDown" id="475-KX-ZIP"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MUk-HM-Am2">
-                                        <rect key="frame" x="0.0" y="40" width="101" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ckY-oR-e7E">
-                                        <rect key="frame" x="0.0" y="80" width="101" height="30"/>
-                                        <state key="normal" title="Ингредиенты:"/>
-                                        <connections>
-                                            <action selector="hideShowButtonClicked:" destination="8rJ-Kc-sve" eventType="touchDown" id="Hsd-kE-Vyf"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vV3-NA-A4h">
-                                        <rect key="frame" x="0.0" y="120" width="101" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="zyH-SS-Uuv">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="521"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yx8-bA-oYD">
+                                                <rect key="frame" x="0.0" y="0.0" width="122" height="30"/>
+                                                <state key="normal" title="Показать рецепт"/>
+                                                <connections>
+                                                    <action selector="btnClicked:" destination="8rJ-Kc-sve" eventType="touchDown" id="475-KX-ZIP"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MUk-HM-Am2">
+                                                <rect key="frame" x="0.0" y="30" width="42" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ckY-oR-e7E">
+                                                <rect key="frame" x="0.0" y="50.5" width="101" height="30"/>
+                                                <state key="normal" title="Ингредиенты:"/>
+                                                <connections>
+                                                    <action selector="hideShowButtonClicked:" destination="8rJ-Kc-sve" eventType="touchDown" id="Hsd-kE-Vyf"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="244" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vV3-NA-A4h">
+                                                <rect key="frame" x="0.0" y="80.5" width="320" height="420"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wZp-zf-ujG">
+                                                <rect key="frame" x="0.0" y="500.5" width="42" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="320" id="1Ir-4q-5O9"/>
+                                            <constraint firstAttribute="trailing" secondItem="vV3-NA-A4h" secondAttribute="trailing" id="9M7-ii-25g"/>
+                                            <constraint firstItem="ckY-oR-e7E" firstAttribute="top" secondItem="MUk-HM-Am2" secondAttribute="bottom" id="sOL-b0-UhO"/>
+                                            <constraint firstAttribute="height" constant="521" id="u89-Fq-5Ie"/>
+                                        </constraints>
+                                    </stackView>
                                 </subviews>
-                            </stackView>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="zyH-SS-Uuv" secondAttribute="bottom" constant="1" id="6jf-cQ-TZJ"/>
+                                    <constraint firstItem="zyH-SS-Uuv" firstAttribute="leading" secondItem="5ST-Jt-g5N" secondAttribute="leading" id="KRb-TY-Bvc"/>
+                                    <constraint firstAttribute="bottom" secondItem="zyH-SS-Uuv" secondAttribute="bottom" constant="47" id="gQ7-Pq-ove"/>
+                                    <constraint firstAttribute="trailing" secondItem="zyH-SS-Uuv" secondAttribute="trailing" id="o9S-PX-Zx0"/>
+                                    <constraint firstItem="zyH-SS-Uuv" firstAttribute="top" secondItem="5ST-Jt-g5N" secondAttribute="top" id="xEr-wb-jEi"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="5ST-Jt-g5N" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="KSq-0q-nPm"/>
+                            <constraint firstAttribute="trailing" secondItem="5ST-Jt-g5N" secondAttribute="trailing" id="f33-Dk-VDh"/>
+                            <constraint firstItem="5ST-Jt-g5N" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="uyJ-js-Uwk"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="5ST-Jt-g5N" secondAttribute="bottom" constant="47" id="xHn-Tl-zij"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                     <connections>
+                        <outlet property="ingredientsLabel" destination="vV3-NA-A4h" id="zVK-9n-Vqt"/>
                         <outlet property="nameLabel" destination="MUk-HM-Am2" id="Nyl-eH-bbn"/>
                         <outlet property="showHideButton" destination="ckY-oR-e7E" id="eRi-dD-wo1"/>
-                        <outlet property="stackView" destination="KtX-kO-HoH" id="8a1-5u-ruj"/>
+                        <outlet property="stackView" destination="zyH-SS-Uuv" id="Me4-QQ-IhY"/>
+                        <outlet property="textLabel" destination="wZp-zf-ujG" id="LjB-2a-EVu"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="750" y="359.15492957746477"/>
         </scene>

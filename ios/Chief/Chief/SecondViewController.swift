@@ -12,8 +12,9 @@ class SecondViewController:UIViewController, UITableViewDataSource, UITableViewD
   //  var tableView: UITableView!
     var hidden:Bool?=false
     @IBOutlet var stackView: UIStackView!
-    @IBOutlet var nameLabel: UILabel!
     @IBOutlet var textLabel: UILabel!
+    @IBOutlet var ingredientsLabel: UILabel!
+    @IBOutlet var nameLabel: UILabel!
     @IBOutlet var tableView: UITableView!
     
     @IBOutlet var showHideButton: UIButton!
@@ -34,25 +35,33 @@ class SecondViewController:UIViewController, UITableViewDataSource, UITableViewD
         }
         self.nameLabel.text=self.recipe.name;
         self.nameLabel.sizeToFit()
+        self.textLabel.text = self.recipe.text
+        for ingredient in recipe.ingredients{
+            //self.ingredientsLabel.text=self.ingredientsLabel.text! + "\r\n"+ingredient.name
+        }
+        self.ingredientsLabel.sizeToFit()
+        self.textLabel.sizeToFit()
+        self.textLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
+        self.textLabel.adjustsFontSizeToFitWidth = false;
     }
     @IBAction func hideShowButtonClicked(_ sender: UIButton) {
         if hidden!{
-            tableView.isHidden=false
+            ingredientsLabel.isHidden=false
             hidden=false
         }
         else{
-            tableView.isHidden=true
+            ingredientsLabel.isHidden=true
             hidden=true
         }
     }
     override func viewWillAppear(_ animated: Bool) {
         recipe = Recipe()
-        let frame:CGRect = CGRect(x: 0, y: 150, width: 100, height: 400)
+        let frame:CGRect = CGRect(x: 0, y: 150, width: 250, height: 300)
         self.tableView = UITableView(frame: frame)
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension;
         tableView.delegate = self
-        stackView.addArrangedSubview(self.tableView)
+        //stackView.addArrangedSubview(self.tableView)
         //self.view.addSubview(self.tableView)
         
 //        let btn = UIButton(frame: CGRect(x: 0, y: 25, width: self.view.frame.width, height: 20))
