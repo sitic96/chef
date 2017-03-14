@@ -14,6 +14,8 @@ class SecondViewController:UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet var stackView: UIStackView!
     @IBOutlet var textLabel: UILabel!
     @IBOutlet var ingredientsLabel: UILabel!
+    @IBOutlet var contentView: UIView!
+    @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var tableView: UITableView!
     
@@ -23,6 +25,10 @@ class SecondViewController:UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.ingredientsLabel.numberOfLines=0;
+        self.textLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
+        self.textLabel.adjustsFontSizeToFitWidth = false;
+        scrollView.contentSize = contentView.frame.size;
         // Do any additional setup after loading the view, typically from a nib.
     }
     @IBAction func btnClicked(_ sender: Any) {
@@ -35,14 +41,13 @@ class SecondViewController:UIViewController, UITableViewDataSource, UITableViewD
         }
         self.nameLabel.text=self.recipe.name;
         self.nameLabel.sizeToFit()
+        self.textLabel.numberOfLines=0;
         self.textLabel.text = self.recipe.text
         for ingredient in recipe.ingredients{
-            //self.ingredientsLabel.text=self.ingredientsLabel.text! + "\r\n"+ingredient.name
+            self.ingredientsLabel.text=self.ingredientsLabel.text! + "\r\n"+ingredient.name
         }
         self.ingredientsLabel.sizeToFit()
         self.textLabel.sizeToFit()
-        self.textLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
-        self.textLabel.adjustsFontSizeToFitWidth = false;
     }
     @IBAction func hideShowButtonClicked(_ sender: UIButton) {
         if hidden!{
