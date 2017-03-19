@@ -9,17 +9,14 @@ import UIKit
 import SwiftyJSON
 
 class SecondViewController:UIViewController, UITableViewDataSource, UITableViewDelegate {
-  //  var tableView: UITableView!
     var hidden:Bool?=false
     @IBOutlet var stackView: UIStackView!
-   // @IBOutlet var textLabel: UILabel!
     @IBOutlet var textView: UITextView!
-    @IBOutlet var ingredientsLabel: UILabel!
     @IBOutlet var contentView: UIView!
+    @IBOutlet var ingredientsLabel: UILabel!
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var tableView: UITableView!
-    
     @IBOutlet var showHideButton: UIButton!
     
     var recipe :Recipe!
@@ -28,13 +25,12 @@ class SecondViewController:UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         self.ingredientsLabel.numberOfLines=0;
         self.automaticallyAdjustsScrollViewInsets = false
-//        self.textLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
-//        self.textLabel.adjustsFontSizeToFitWidth = false;
         scrollView.contentSize = contentView.frame.size;
         scrollView.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
     }
     @IBAction func btnClicked(_ sender: Any) {
+        //self.ingredientsLabel.text=""
         RestApiManager.sharedInstance.getRandomUser { (json: JSON) in
             self.recipe = Recipe(json: json)
             DispatchQueue.main.async(execute: {
@@ -44,22 +40,16 @@ class SecondViewController:UIViewController, UITableViewDataSource, UITableViewD
         }
         self.nameLabel.text=self.recipe.name;
         self.nameLabel.sizeToFit()
-//        self.textLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
-//        self.textLabel.numberOfLines=0;
-//        self.textLabel.text = self.recipe.text
         for ingredient in recipe.ingredients{
             self.ingredientsLabel.text=self.ingredientsLabel.text! + "\r\n"+ingredient.name
         }
         self.ingredientsLabel.sizeToFit()
-        self.textView.isEditable=false
+       self.textView.isEditable=false
         self.textView.text=recipe.text
-        let fixedWidth = textView.frame.size.width
-        textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
-        let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
-        var newFrame = textView.frame
-        newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
-        textView.frame = newFrame;
-//        self.textLabel.sizeToFit()
+        textView.sizeToFit()
+//        textView.layoutIfNeeded()
+//        let height = textView.sizeThatFits(CGSize(width:textView.frame.size.width, height: CGFloat.greatestFiniteMagnitude)).height
+//        textView.contentSize.height = height
     }
     @IBAction func hideShowButtonClicked(_ sender: UIButton) {
         if hidden!{
