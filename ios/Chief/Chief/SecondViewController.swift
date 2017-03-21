@@ -27,11 +27,8 @@ class SecondViewController:UIViewController, UITableViewDataSource, UITableViewD
         self.automaticallyAdjustsScrollViewInsets = false
         scrollView.contentSize = contentView.frame.size;
         scrollView.delegate = self
-        // Do any additional setup after loading the view, typically from a nib.
     }
-    @IBAction func btnClicked(_ sender: Any) {
-        //self.ingredientsLabel.text=""
-        RestApiManager.sharedInstance.getRandomUser { (json: JSON) in
+    @IBAction func btnClicked(_ sender: Any) {        RestApiManager.sharedInstance.getRandomUser { (json: JSON) in
             self.recipe = Recipe(json: json)
             DispatchQueue.main.async(execute: {
                 self.tableView.reloadData()
@@ -47,9 +44,6 @@ class SecondViewController:UIViewController, UITableViewDataSource, UITableViewD
        self.textView.isEditable=false
         self.textView.text=recipe.text
         textView.sizeToFit()
-//        textView.layoutIfNeeded()
-//        let height = textView.sizeThatFits(CGSize(width:textView.frame.size.width, height: CGFloat.greatestFiniteMagnitude)).height
-//        textView.contentSize.height = height
     }
     @IBAction func hideShowButtonClicked(_ sender: UIButton) {
         if hidden!{

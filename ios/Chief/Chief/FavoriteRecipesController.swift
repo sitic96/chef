@@ -11,19 +11,28 @@ import UIKit
 class FirstViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
 @IBOutlet var ingredientsChooser: UIPickerView!
-    let pickerData = ["Mozzarella","Gorgonzola","Provolone","Brie","Maytag Blue","Sharp Cheddar","Monterrey Jack","Stilton","Gouda","Goat Cheese", "Asiago"]
+    let pickerData = ["Соль","Сахар","Вода","Молоко"]
+    var choosedValue:String!
     @IBOutlet var myLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ingredientsChooser.dataSource = self
         ingredientsChooser.delegate = self
+    
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    @IBAction func hjefn(_ sender: Any) {
+        choosedValue=myLabel.text
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            let svc = segue.destination as! SearchResultsController;
+            svc.choosedValue = pickerData
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
