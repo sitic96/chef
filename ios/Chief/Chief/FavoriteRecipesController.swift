@@ -11,6 +11,7 @@ import UIKit
 class FirstViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
 @IBOutlet var ingredientsChooser: UIPickerView!
+    var choosedIngredients = [String]()
     let pickerData = ["Соль","Сахар","Вода","Молоко"]
     var choosedValue:String!
     @IBOutlet var myLabel: UILabel!
@@ -44,9 +45,19 @@ class FirstViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        myLabel.text=pickerData[row]
+//        if (!choosedIngredients.contains(pickerData[row])){
+//            choosedIngredients.append(pickerData[row])
+//            myLabel.text = myLabel.text! + " " + pickerData[row]
+//        }
+//        myLabel.sizeToFit()
         return pickerData[row]
     }
     
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if (!choosedIngredients.contains(pickerData[row])){
+            choosedIngredients.append(pickerData[row])
+            myLabel.text = myLabel.text! + " " + pickerData[row]
+        }
+        myLabel.sizeToFit()
+    }
 }
-
