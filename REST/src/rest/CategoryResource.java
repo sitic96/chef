@@ -17,41 +17,63 @@ public class CategoryResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
     @Path("{id}")
-    public Category getCategory(@PathParam("id") Integer id) {
-        Category c = DBWorker.readByIdСategory("Category", "Categories", id);
-        return c;
+    public Response getCategory(@PathParam("id") Integer id) {
+        try {
+            return Response.status(Response.Status.OK).entity(DBWorker.readByIdСategory("Category", "Categories", id)).build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.OK).build();
+        }
     }
 
     @GET
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
     public Response getAllCategories() {
-        GenericEntity<List<Category>> entity = new GenericEntity<List<Category>>(DBWorker.getAllCategories("Categories", "Category")) {
-        };
-        return Response.ok(entity).build();
+        try {
+            GenericEntity<List<Category>> entity = new GenericEntity<List<Category>>(DBWorker.getAllCategories("Categories", "Category")) {
+            };
+            return Response.status(Response.Status.OK).entity(entity).build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
     }
 
     @POST
     @Path("/add")
     @Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
     @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
-    public void addNewCategory(Category category) {
-        DBWorker.addNewCategory(category.getName());
+    public Response addNewCategory(Category category) {
+        try {
+            DBWorker.addNewCategory(category.getName());
+            return Response.status(Response.Status.OK).build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
     }
 
     @POST
     @Path("/remove")
     @Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
     @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
-    public void removeCategory(Category category) {
-        DBWorker.removeCategory(category.getId());
+    public Response removeCategory(Category category) {
+        try {
+            DBWorker.removeCategory(category.getId());
+            return Response.status(Response.Status.OK).build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
     }
 
     @POST
     @Path("/update")
     @Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
     @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
-    public void updateCategory(Category category) {
-        DBWorker.updateCategory(category.getId(), category.getName());
+    public Response updateCategory(Category category) {
+        try {
+            DBWorker.updateCategory(category.getId(), category.getName());
+            return Response.status(Response.Status.OK).build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
     }
 }

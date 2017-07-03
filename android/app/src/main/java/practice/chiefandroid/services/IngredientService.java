@@ -17,7 +17,7 @@ public interface IngredientService {
     Call<List<Ingredient>> ingredients();
 
     public static final Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8080/rest/")
+            .baseUrl("http://192.168.56.1:8181/rest/")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 }

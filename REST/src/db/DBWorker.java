@@ -158,7 +158,7 @@ public class DBWorker {
     }
 
     public static void addNewIngredient(String name) {
-        if (!exist("Categories", name, "Name")) {
+        if (!exist("Ingredients", name, "Name")) {
             insert("INSERT INTO `Ingredients`(`name`) VALUES (\"" + name + "\")");
         }
     }

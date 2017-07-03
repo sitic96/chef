@@ -67,7 +67,7 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Ingredient>> call, Throwable t) {
-
+                int ttt = 10;
             }
         });
     }

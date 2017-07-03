@@ -14,7 +14,15 @@ typealias ServiceResponse = (JSON, NSError?) -> Void
 class RestApiManager: NSObject {
     static let sharedInstance = RestApiManager()
     
-    let baseURL = "http://localhost:8080/rest/recipes/28"
+    let URL = "http://MacBook-Pro-Sitora.local:8181/rest/"
+    let baseURL = "http://MacBook-Pro-Sitora.local:8181/rest/recipes/28"
+    
+    func getAllIngredients(onCompletion: @escaping (JSON) -> Void){
+        let route = URL + "ingredient/all"
+        makeHTTPGetRequest(path: route, onCompletion: { json, err in
+            onCompletion(json as JSON)
+        })
+    }
     
     func getRandomUser(onCompletion: @escaping (JSON) -> Void) {
         let route = baseURL

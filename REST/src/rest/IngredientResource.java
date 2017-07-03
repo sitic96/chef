@@ -19,8 +19,12 @@ public class IngredientResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
     @Path("{id}")
-    public Ingredient getIngredient(@PathParam("id") Integer id) {
-        return DBWorker.readByIdIngredient("Ingredient", "Ingredients", id);
+    public Response getIngredient(@PathParam("id") Integer id) {
+        try {
+            return Response.status(Response.Status.OK).entity(DBWorker.readByIdIngredient("Ingredient", "Ingredients", id)).build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
     }
 
     @GET
@@ -29,30 +33,45 @@ public class IngredientResource {
     public Response getAllIngredients() {
         GenericEntity<List<Ingredient>> entity = new GenericEntity<List<Ingredient>>(DBWorker.getAllIngredients("Ingredients", "Ingredient")) {
         };
-        return Response.ok(entity).build();
+        return Response.status(Response.Status.OK).entity(entity).build();
     }
 
     @POST
     @Path("/add")
     @Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
     @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
-    public void addNewIngredient(Ingredient ingredient) {
-        DBWorker.addNewIngredient(ingredient.getName());
+    public Response addNewIngredient(Ingredient ingredient) {
+        try {
+            DBWorker.addNewIngredient(ingredient.getName());
+            return Response.status(Response.Status.OK).build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
     }
 
     @POST
     @Path("/remove")
     @Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
     @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
-    public void removeIngredient(Ingredient ingredient) {
-        DBWorker.removeIngredient(ingredient.getId());
+    public Response removeIngredient(Ingredient ingredient) {
+        try {
+            DBWorker.removeIngredient(ingredient.getId());
+            return Response.status(Response.Status.OK).build();
+        } catch (Exception e){
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
     }
 
     @POST
     @Path("/update")
     @Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
     @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
-    public void updateIngredient(Ingredient ingredient) {
-        DBWorker.updateIngredient(ingredient.getId(), ingredient.getName());
+    public Response updateIngredient(Ingredient ingredient) {
+        try {
+            DBWorker.updateIngredient(ingredient.getId(), ingredient.getName());
+            return Response.status(Response.Status.OK).build();
+        } catch (Exception e){
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
     }
 }

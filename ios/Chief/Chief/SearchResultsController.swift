@@ -9,7 +9,7 @@
 import UIKit
 
 class SearchResultsController: UIViewController {
-     var choosedValue:[String]!
+     var choosedValue:[Ingredient]!
     @IBOutlet var label: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()

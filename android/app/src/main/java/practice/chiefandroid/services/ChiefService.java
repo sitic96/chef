@@ -20,19 +20,10 @@ public interface ChiefService {
     Call<Recipe> recipe();
 
     public static final Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8080/rest/")
+            .baseUrl("http://192.168.56.1:8181/rest/")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
-    //    public interface GitHubService {
-//        @GET("recipes/all")
-//        Call<List<RecipeActivity>> repoContributors();
-//        //http://localhost:8080/rest/categories/all
-//        public static final Retrofit retrofit = new Retrofit.Builder()
-//                .baseUrl("http://10.0.2.2:8080/rest/")
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .build();
-//    }
 
     @POST("recipes/getbyingredients")
     Call<List<Recipe>> recipes(@Body HashSet<String> ingredients);
