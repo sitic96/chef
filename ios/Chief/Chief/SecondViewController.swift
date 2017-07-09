@@ -11,6 +11,7 @@ import SwiftyJSON
 class SecondViewController:UIViewController {
     var hidden:Bool?=false
     
+    @IBOutlet var scroll: UIScrollView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var showHideButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -19,28 +20,42 @@ class SecondViewController:UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.estimatedRowHeight = 50
+        self.tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     @IBAction func btnClicked(_ sender: Any) {
-            RestApiManager.sharedInstance.getRandomUser { (json: JSON) in
+        RestApiManager.sharedInstance.getRandomUser { (json: JSON) in
             self.recipe = Recipe(json: json)
             DispatchQueue.main.async(execute: {
+                self.tableView.tableFooterView = UIView()
                 self.tableView.reloadData()
-                self.tableView.rowHeight = UITableViewAutomaticDimension;
+                self.tableView.isScrollEnabled = false;
+                self.tableView.frame = CGRect(x: self.tableView.frame.origin.x, y: self.tableView.frame.origin.y, width: self.tableView.frame.size.width, height: self.tableView.frame.size.height+(CGFloat(self.recipe.ingredients.count) * 50.0));
+ 
                 self.nameLabel.text=self.recipe.name;
                 self.nameLabel.sizeToFit();
+                self.checkScrollSize()
             })
         }
     }
     @IBAction func hideShowButtonClicked(_ sender: UIButton) {
-        
         tableView.isHidden = !tableView.isHidden
-        
+        checkScrollSize();
     }
     override func viewWillAppear(_ animated: Bool) {
         recipe = Recipe()
-        let frame:CGRect = CGRect(x: 0, y: 150, width: 250, height: 300)
+        //let frame:CGRect = CGRect(x: 0, y: 150, width: 250, height: 300)
         showHideButton.setTitleColor(UIColor.black, for: .normal)
+    }
+    
+    func checkScrollSize(){
+        var contentRect = CGRect.zero
+        for view in self.scroll.subviews {
+            contentRect = contentRect.union(view.frame)
+        }
+        self.scroll.contentSize = contentRect.size
     }
     
 }
