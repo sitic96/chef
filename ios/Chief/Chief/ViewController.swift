@@ -8,22 +8,44 @@
 
 import UIKit
 import Foundation
+import SwiftyJSON
+import SwiftGifOrigin
+import SwiftyGif
+
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    //var items = [Item]()
-    var tableData: [String] = ["Evo X", "458", "GTR", "Evo X", "458", "GTR", "Evo X", "458", "GTR", "Evo X", "458", "GTR"]
+
+    @IBOutlet var collectionView: UICollectionView!
+    
+    var recipes = [Recipe]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getRandomRecipes()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tableData.count
+        return recipes.count
     }
+    
+    // TODO: Заменить на SwiftyGif
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: colvwCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! colvwCell
-        cell.label.text = tableData[indexPath.row]
+        cell.label.text = recipes[indexPath.row].name
+        
+        let url = URL(string: "http://orig03.deviantart.net/c7a3/f/2012/258/9/1/ani_rainbow_by_engineerjr-d5et1sk.gif")
+        let data = try? Data(contentsOf: url!)
+        
+        //let gif = UIImage.gif(url: "http://orig03.deviantart.net/c7a3/f/2012/258/9/1/ani_rainbow_by_engineerjr-d5et1sk.gif")
+        let gifmanager = SwiftyGifManager(memoryLimit:20)
+        let img = UIImage(gifData: data!, levelOfIntegrity: 0.5)
+        OperationQueue.main.addOperation {
+            //cell.gifView.image = gif
+            cell.gifView.setGifImage(img, manager: gifmanager)
+        }
+        
+        
         return cell
     }
     
@@ -36,5 +58,16 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         super.didReceiveMemoryWarning()
     }
     
-    
+    func getRandomRecipes(){
+        RestApiManager.sharedInstance.getRandomRecipes { (json: JSON) in
+            DispatchQueue.main.async(execute: {
+
+            for (_, object) in json {
+                
+                self.recipes.append(Recipe(json: object))
+            }
+                    self.collectionView.reloadData()
+            })
+        }
+    }
 }

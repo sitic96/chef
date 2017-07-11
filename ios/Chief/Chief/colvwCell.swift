@@ -10,4 +10,5 @@ import UIKit
 
 class colvwCell: UICollectionViewCell {
     @IBOutlet var label: UILabel!
+    @IBOutlet var gifView: UIImageView!
 }

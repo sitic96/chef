@@ -27,6 +27,19 @@ public class RecipeResource {
     }
 
     @GET
+    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
+    @Path("/random")
+    public Response getListRandomRecipes() {
+        try {
+            GenericEntity<List<Recipe>> entity = new GenericEntity<List<Recipe>>(DBWorker.getRandomRecipes(10, "Recipes", "Recipe")) {
+            };
+            return Response.status(Response.Status.OK).entity(entity).build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+    }
+
+    @GET
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
     public Response getAllRecipes() {

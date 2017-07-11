@@ -4,5 +4,7 @@
   use_frameworks!
 target 'Chief' do
 pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+pod 'SwiftGifOrigin', '~> 1.6.1'
+pod 'SwiftyGif', :git => 'https://github.com/kirualex/SwiftyGif.git'
 
 end

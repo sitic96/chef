@@ -133,7 +133,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="372" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IGM-OW-s3U" id="cAR-Nu-UgN">
-                                                    <rect key="frame" x="0.0" y="0.0" width="372" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="372" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
@@ -290,9 +290,14 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7B5-uI-aIb">
+                                                    <rect key="frame" x="23" y="46" width="240" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </view>
                                         <connections>
+                                            <outlet property="gifView" destination="7B5-uI-aIb" id="ajq-VU-rZc"/>
                                             <outlet property="label" destination="hmz-4A-LQU" id="Nfv-qI-X2w"/>
                                         </connections>
                                     </collectionViewCell>
@@ -311,15 +316,19 @@
                             <constraint firstItem="AeN-OU-eZ5" firstAttribute="leading" secondItem="D0m-5g-0WQ" secondAttribute="leadingMargin" constant="-16" id="h7f-zq-OCm"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Лента" id="sfL-Md-C32"/>
+                    <tabBarItem key="tabBarItem" title="Лента" image="ic_home" id="sfL-Md-C32"/>
+                    <connections>
+                        <outlet property="collectionView" destination="AeN-OU-eZ5" id="UbN-9W-hUC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iao-Ig-HzE" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1884" y="612"/>
+            <point key="canvasLocation" x="248" y="616"/>
         </scene>
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
+        <image name="ic_home" width="24" height="24"/>
         <image name="second" width="30" height="30"/>
     </resources>
 </document>

@@ -129,6 +129,25 @@ public class DBWorker {
         }
     }
 
+    public static List<Recipe> getRandomRecipes(int count, String table, String objName) {
+        try {
+            QueryRunner run = new QueryRunner(Connector.getDataSource());
+            ResultSetHandler<List<Recipe>> h = new BeanListHandler<>((Class<Recipe>) Class.forName("entity." + objName));
+            List<Recipe> recipes = run.query("SELECT * FROM " + table + " ORDER BY RAND()\n" +
+                    "LIMIT " + count, h);
+            for (Recipe recipe : recipes) {
+                recipe.setIngredients(run.query("select * from Ingredients where id in (SELECT ingredient from Rec_Ing Rec_Ing WHERE recipe = " +
+                        recipe.getId() + " )", new BeanListHandler<>(Ingredient.class)));
+            }
+            return recipes;
+
+        } catch (SQLException e) {
+            throw new WebServiceException();
+        } catch (ClassNotFoundException e) {
+            throw new WebServiceException();
+        }
+    }
+
     public static List<Ingredient> getAllIngredients(String table, String objName) {
         try {
             QueryRunner run = new QueryRunner(Connector.getDataSource());
