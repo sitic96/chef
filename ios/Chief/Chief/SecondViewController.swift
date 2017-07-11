@@ -6,6 +6,7 @@
 //  Copyright © 2017 myapps. All rights reserved.
 //
 import UIKit
+import CoreData
 import SwiftyJSON
 
 class SecondViewController:UIViewController {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 import SwiftyJSON
 
 class FirstViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {

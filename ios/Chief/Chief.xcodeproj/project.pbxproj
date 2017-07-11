@@ -11,6 +11,9 @@
 		4923EC161E6B5AB600A9F673 /* RestApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4923EC151E6B5AB600A9F673 /* RestApiManager.swift */; };
 		4923EC181E6B5C1D00A9F673 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4923EC171E6B5C1D00A9F673 /* Recipe.swift */; };
 		4988EB941E807E4D000CAE40 /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4988EB931E807E4D000CAE40 /* SearchResultsController.swift */; };
+		498CC3031F12D2D400D38654 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 498CC3021F12D2D400D38654 /* CoreData.framework */; };
+		498CC3431F1436BE00D38654 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498CC3421F1436BE00D38654 /* ViewController.swift */; };
+		498CC3451F14405F00D38654 /* colvwCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498CC3441F14405F00D38654 /* colvwCell.swift */; };
 		4996B7A71E6DFA8300974FF6 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4996B7A61E6DFA8300974FF6 /* Ingredient.swift */; };
 		49AB83B51E6B35E3007B9180 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AB83B41E6B35E3007B9180 /* AppDelegate.swift */; };
 		49AB83B71E6B35E3007B9180 /* FavoriteRecipesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AB83B61E6B35E3007B9180 /* FavoriteRecipesController.swift */; };
@@ -44,6 +47,9 @@
 		4923EC151E6B5AB600A9F673 /* RestApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestApiManager.swift; sourceTree = "<group>"; };
 		4923EC171E6B5C1D00A9F673 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Recipe.swift; path = ../Recipe.swift; sourceTree = "<group>"; };
 		4988EB931E807E4D000CAE40 /* SearchResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
+		498CC3021F12D2D400D38654 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		498CC3421F1436BE00D38654 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		498CC3441F14405F00D38654 /* colvwCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = colvwCell.swift; sourceTree = "<group>"; };
 		4996B7A61E6DFA8300974FF6 /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		49AB83B11E6B35E3007B9180 /* Chief.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chief.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AB83B41E6B35E3007B9180 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				498CC3031F12D2D400D38654 /* CoreData.framework in Frameworks */,
 				0B0E045FC4AC6AA485146332 /* Pods_Chief.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,6 +138,7 @@
 		49AB83B31E6B35E3007B9180 /* Chief */ = {
 			isa = PBXGroup;
 			children = (
+				498CC3441F14405F00D38654 /* colvwCell.swift */,
 				4996B7A81E6DFB3200974FF6 /* REST */,
 				4996B7A51E6DFA5A00974FF6 /* Objects */,
 				49AB83B41E6B35E3007B9180 /* AppDelegate.swift */,
@@ -141,6 +149,7 @@
 				49AB83BD1E6B35E3007B9180 /* Assets.xcassets */,
 				49AB83BF1E6B35E3007B9180 /* LaunchScreen.storyboard */,
 				49AB83C21E6B35E3007B9180 /* Info.plist */,
+				498CC3421F1436BE00D38654 /* ViewController.swift */,
 			);
 			path = Chief;
 			sourceTree = "<group>";
@@ -175,6 +184,7 @@
 		C88C05B4AC7F6DD9E36F7DBA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				498CC3021F12D2D400D38654 /* CoreData.framework */,
 				2CCE6AB3155073BF19AF6660 /* Pods_Chief.framework */,
 			);
 			name = Frameworks;
@@ -371,7 +381,9 @@
 				4996B7A71E6DFA8300974FF6 /* Ingredient.swift in Sources */,
 				4988EB941E807E4D000CAE40 /* SearchResultsController.swift in Sources */,
 				4923EC161E6B5AB600A9F673 /* RestApiManager.swift in Sources */,
+				498CC3451F14405F00D38654 /* colvwCell.swift in Sources */,
 				4923EC181E6B5C1D00A9F673 /* Recipe.swift in Sources */,
+				498CC3431F1436BE00D38654 /* ViewController.swift in Sources */,
 				49AB83B71E6B35E3007B9180 /* FavoriteRecipesController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
