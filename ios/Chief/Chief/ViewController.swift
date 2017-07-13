@@ -29,6 +29,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     // TODO: Заменить на SwiftyGif
+    // TODO: После изменений бд заменить на реальные гифки
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: colvwCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! colvwCell
@@ -37,22 +38,27 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let url = URL(string: "http://orig03.deviantart.net/c7a3/f/2012/258/9/1/ani_rainbow_by_engineerjr-d5et1sk.gif")
         let data = try? Data(contentsOf: url!)
         
-        //let gif = UIImage.gif(url: "http://orig03.deviantart.net/c7a3/f/2012/258/9/1/ani_rainbow_by_engineerjr-d5et1sk.gif")
         let gifmanager = SwiftyGifManager(memoryLimit:20)
         let img = UIImage(gifData: data!, levelOfIntegrity: 0.5)
         OperationQueue.main.addOperation {
-            //cell.gifView.image = gif
-            cell.gifView.setGifImage(img, manager: gifmanager)
+            cell.gifView.setGifImage(img, manager: gifmanager, loopCount:2)
         }
-        
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? colvwCell{
+            
+            if cell.gifView.isAnimatingGif() {
+                cell.gifView.stopAnimatingGif()
+            }
+            else {
+                cell.gifView.startAnimatingGif()
+            }
+        }
         print("Cell \(indexPath.row) selected")
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -69,5 +75,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                     self.collectionView.reloadData()
             })
         }
+    }
+    
+    func setButtonImages(){
+        
     }
 }
