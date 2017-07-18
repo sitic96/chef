@@ -1,21 +1,21 @@
 package data;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigInteger;
 
 /**
  * Created by sitora on 15.07.17.
  */
 @Entity
+@Table(name = "`User`")
 public class User {
     private BigInteger id;
     private String name;
     private String profilePicture;
 
     @Id
+    @SequenceGenerator(name = "pk_sequence", sequenceName = "user_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
     @Column(name = "id", nullable = false, precision = 0)
     public BigInteger getId() {
         return id;
@@ -26,7 +26,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "name", nullable = false, length = -1)
+    @Column(name = "name", nullable = false, length = -1, unique = true)
     public String getName() {
         return name;
     }
