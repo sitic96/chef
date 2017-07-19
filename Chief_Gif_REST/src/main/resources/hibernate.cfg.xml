@@ -8,11 +8,13 @@
         <property name="connection.driver_class">org.postgresql.Driver</property>
         <property name="hibernate.connection.username">postgres</property>
         <property name="hibernate.connection.password">1254</property>
+        <property name="hibernate.default_schema">public</property>
         <mapping class="data.Category"/>
         <mapping class="data.IngRec"/>
         <mapping class="data.Ingredients"/>
         <mapping class="data.Recipe"/>
         <mapping class="data.User"/>
+        <mapping class="data.UsersLikes"/>
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
     </session-factory>

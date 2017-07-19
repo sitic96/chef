@@ -1,5 +1,7 @@
 package DBUtils;
 
+import data.Category;
+import data.Recipe;
 import data.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -20,9 +22,8 @@ public class Connector {
     static {
         try {
             Configuration configuration = new Configuration();
-            configuration.addAnnotatedClass(User.class);
+            configuration.addAnnotatedClass(User.class).addAnnotatedClass(Recipe.class).addAnnotatedClass(Category.class);
             configuration.configure();
-
             serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
             ourSessionFactory = configuration.buildSessionFactory(serviceRegistry);
         } catch (Throwable ex) {

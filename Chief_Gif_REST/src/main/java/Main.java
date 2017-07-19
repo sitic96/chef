@@ -8,6 +8,6 @@ public class Main {
 
     public static void main(final String[] args) throws Exception {
 
-        User user = UserManager.class.newInstance().get("admin");
+        User user = UserManager.class.newInstance().getUserByLogin("admin");
     }
 }

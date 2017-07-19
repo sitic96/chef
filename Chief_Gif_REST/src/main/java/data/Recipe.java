@@ -12,6 +12,7 @@ public class Recipe {
     private String name;
     private String imgLink;
     private Category categoryByCategory;
+    private BigInteger author;
 
     @Id
     @Column(name = "id", nullable = false, precision = 0)
@@ -66,12 +67,22 @@ public class Recipe {
     }
 
     @ManyToOne
-    @JoinColumn(name = "category", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "Category", referencedColumnName = "id", nullable = false)
     public Category getCategoryByCategory() {
         return categoryByCategory;
     }
 
     public void setCategoryByCategory(Category categoryByCategory) {
         this.categoryByCategory = categoryByCategory;
+    }
+
+    @Basic
+    @Column(name = "author", nullable = false, precision = 0)
+    public BigInteger getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(BigInteger author) {
+        this.author = author;
     }
 }
