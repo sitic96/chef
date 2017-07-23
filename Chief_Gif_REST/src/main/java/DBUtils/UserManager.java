@@ -5,6 +5,7 @@ import data.User;
 import org.hibernate.*;
 import org.hibernate.criterion.Restrictions;
 
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ public class UserManager {
         Session session = Connector.getConnector().getSession();
         try {
             Criteria criteria = session.createCriteria(User.class);
-            User user = (User) criteria.add(Restrictions.eq("name", userName))
+            User user = (User) criteria.add(Restrictions.eq("user_name", userName))
                     .uniqueResult();
             return user;
         } catch (Exception e) {
@@ -27,26 +28,27 @@ public class UserManager {
         return null;
     }
 
-    public User getUserById(Integer id) {
+    public User getUserById(BigInteger id) {
         Session session = Connector.getConnector().getSession();
         try {
-            return session.load(User.class, id);
+            Criteria criteria = session.createCriteria(User.class);
+            User user = (User) criteria.add(Restrictions.eq("user_id", id))
+                    .uniqueResult();
+            return user;
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
+            session.close();
         }
         return null;
     }
 
-    public List<Recipe> getLikes(Integer userId){
+    public List<Recipe> getLikes(Integer userId) {
         Session session = Connector.getConnector().getSession();
-        String sql = "select * from \"Recipe\" where id in (select recipe_id from users_likes where user_id = :user_id)";
+        String sql = "select * from \"Recipe\" where id in (select recipe_id from users_likes where user_id = " + userId + ")";
         SQLQuery query = session.createSQLQuery(sql);
         query.addEntity(Recipe.class);
-        query.setParameter("user_id", 1);
+        //query.setParameter("user_id", userId);
         List results = query.list();
 
         return results;
@@ -138,7 +140,7 @@ public class UserManager {
 
     private User loadUser(String userName, String url) {
         User user = new User();
-        user.setName(userName);
+        user.setUser_name(userName);
         user.setProfilePicture(url);
 
         return user;

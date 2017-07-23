@@ -38,6 +38,19 @@ class RestApiManager: NSObject {
         })
     }
     
+    func getUser(onCompletion: @escaping (JSON) -> Void) {
+        let route = URL + "recipes/random"
+        makeHTTPGetRequest(path: route, onCompletion: { json, err in
+            onCompletion(json as JSON)
+        })
+    }
+    
+    func getRecipe(onCompletion: @escaping (JSON) -> Void){
+        let route = "http://localhost:8080/rest_gif/recipes/byid/1"
+        makeHTTPGetRequest(path: route, onCompletion: { json, err in
+            onCompletion(json as JSON)
+        })
+    }
     
     // MARK: Perform a GET Request
     private func makeHTTPGetRequest(path: String, onCompletion: @escaping ServiceResponse) {

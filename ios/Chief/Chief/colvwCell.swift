@@ -13,6 +13,8 @@ class colvwCell: UICollectionViewCell {
     @IBOutlet var gifView: UIImageView!
     @IBOutlet var likeButton: UIButton!
     @IBOutlet var saveButton: UIButton!
+    @IBOutlet var user_name: UILabel!
+    @IBOutlet var profile_picture: UIImageView!
     
     var isLiked : Bool? = false
     var isSaved : Bool? = false

@@ -1,4 +1,5 @@
 import org.glassfish.jersey.server.ResourceConfig;
+import rest.RecipeResource;
 import rest.UserResource;
 
 import javax.ws.rs.ApplicationPath;
@@ -10,6 +11,6 @@ import javax.ws.rs.ApplicationPath;
 public class MyApplication extends ResourceConfig {
 
     public MyApplication() {
-        register(UserResource.class);
+        register(UserResource.class).register(RecipeResource.class);
     }
 }

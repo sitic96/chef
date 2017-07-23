@@ -17,7 +17,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
     @IBOutlet var collectionView: UICollectionView!
     
-    var recipes = [Recipe]()
+    var recipes = [CompleteRecipe]()
+    var recipe : CompleteRecipe?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,17 +34,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: colvwCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! colvwCell
-        cell.label.text = recipes[indexPath.row].name
+        cell.label.text = recipes[indexPath.row].recipe_name
+        cell.user_name.text = recipes[indexPath.row].user_name
         
-        let url = URL(string: "http://orig03.deviantart.net/c7a3/f/2012/258/9/1/ani_rainbow_by_engineerjr-d5et1sk.gif")
-        let data = try? Data(contentsOf: url!)
-        
-        let gifmanager = SwiftyGifManager(memoryLimit:20)
-        let img = UIImage(gifData: data!, levelOfIntegrity: 0.5)
-        OperationQueue.main.addOperation {
-            cell.gifView.setGifImage(img, manager: gifmanager, loopCount:2)
-        }
-        
+        setGifImage(cell:cell, index:indexPath.row)
+        setProfileImage(cell: cell, index: indexPath.row)
         return cell
     }
     
@@ -65,19 +60,39 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func getRandomRecipes(){
-        RestApiManager.sharedInstance.getRandomRecipes { (json: JSON) in
+        RestApiManager.sharedInstance.getRecipe { (json: JSON) in
             DispatchQueue.main.async(execute: {
-
-            for (_, object) in json {
+                self.recipe = CompleteRecipe(json:json)
+                self.recipes.append(self.recipe!)
+            /*for (_, object) in json {
                 
                 self.recipes.append(Recipe(json: object))
             }
+ */
                     self.collectionView.reloadData()
             })
         }
     }
-    
-    func setButtonImages(){
+
+    func setGifImage(cell:colvwCell, index:Int){
+        let url = URL(string: recipes[index].img_link)
+        let data = try? Data(contentsOf: url!)
         
+        let gifmanager = SwiftyGifManager(memoryLimit:20)
+        let img = UIImage(gifData: data!, levelOfIntegrity: 0.5)
+        OperationQueue.main.addOperation {
+            cell.gifView.setGifImage(img, manager: gifmanager, loopCount:5)
+        }
     }
+    
+    func setProfileImage(cell:colvwCell, index:Int) {
+        let url = URL(string: recipes[index].profile_picture)
+        let data = try? Data(contentsOf: url!)
+        OperationQueue.main.addOperation {
+            cell.profile_picture.layer.cornerRadius = 20;
+            cell.profile_picture.layer.masksToBounds = true;
+            cell.profile_picture.image = UIImage(data: data! as Data)
+        }
+    }
+    
 }

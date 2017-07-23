@@ -6,6 +6,7 @@ import data.User;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.math.BigInteger;
 
 /**
  * Created by sitora on 19.07.17.
@@ -15,7 +16,7 @@ import javax.ws.rs.core.Response;
 public class UserResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
-    @Path("{login}")
+    @Path("bylogin/{login}")
     public Response getUserByLogin(@PathParam("login") String login) {
         try {
             return Response.status(Response.Status.OK).entity(UserManager.class.newInstance().getUserByLogin(login)).build();
@@ -24,16 +25,17 @@ public class UserResource {
         }
     }
 
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
-//    @Path("{id}")
-//    public Response getUserById(@PathParam("id") Integer id) {
-//        try {
-//            return Response.status(Response.Status.OK).entity(UserManager.class.newInstance().getUserById(id)).build();
-//        } catch (Exception e) {
-//            return Response.status(Response.Status.NOT_FOUND).build();
-//        }
-//    }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
+    @Path("byid/{id}")
+    public Response getUserById(@PathParam("id") BigInteger id) {
+        try {
+            User user = UserManager.class.newInstance().getUserById(id);
+            return Response.status(Response.Status.OK).entity(user).build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+    }
 
     @PUT
     @Path("/add")

@@ -14,6 +14,14 @@ public class Category {
     private BigInteger id;
     private String name;
 
+    public Category(BigInteger id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Category() {
+    }
+
     @Id
     @Column(name = "id", nullable = false, precision = 0)
     public BigInteger getId() {
