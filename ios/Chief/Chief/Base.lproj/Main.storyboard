@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -278,15 +279,14 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="15V-lx-m1H" customClass="colvwCell" customModule="Chief" customModuleProvider="target">
-                                        <rect key="frame" x="47.5" y="0.0" width="311" height="421"/>
+                                        <rect key="frame" x="48" y="0.0" width="311" height="421"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="311" height="421"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmz-4A-LQU">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmz-4A-LQU">
                                                     <rect key="frame" x="8" y="325" width="270" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="tintColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -303,9 +303,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IAl-l0-RcV">
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IAl-l0-RcV">
                                                     <rect key="frame" x="8" y="358" width="24" height="24"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="ic_favorite_border">
                                                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -313,9 +312,8 @@
                                                         <action selector="likeButtonClicked:" destination="15V-lx-m1H" eventType="touchDown" id="lgP-pY-dfY"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikH-9N-Zl3">
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikH-9N-Zl3">
                                                     <rect key="frame" x="46" y="357" width="24" height="25"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="ic_arrow_downward">
                                                         <color key="titleColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
@@ -323,9 +321,8 @@
                                                         <action selector="saveButtonClicked:" destination="15V-lx-m1H" eventType="touchDown" id="Bcc-nr-TUP"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="skq-Sz-skX">
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="skq-Sz-skX">
                                                     <rect key="frame" x="259" y="351" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
                                                     <color key="tintColor" red="0.30609558009999999" green="0.99835759400000001" blue="0.38320404299999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <state key="normal" title="X">
@@ -338,6 +335,15 @@
                                                 </imageView>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailingMargin" secondItem="skq-Sz-skX" secondAttribute="trailing" constant="15" id="JjA-aE-bKp"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="IAl-l0-RcV" secondAttribute="bottom" constant="8" id="KTo-oJ-RhZ"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="ikH-9N-Zl3" secondAttribute="bottom" constant="8" id="Pap-gU-Duh"/>
+                                            <constraint firstItem="ikH-9N-Zl3" firstAttribute="top" secondItem="hmz-4A-LQU" secondAttribute="bottom" constant="8" id="RLu-Rh-Mi4"/>
+                                            <constraint firstItem="ikH-9N-Zl3" firstAttribute="leading" secondItem="IAl-l0-RcV" secondAttribute="trailing" constant="15" id="Ywc-cs-xaI"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="skq-Sz-skX" secondAttribute="bottom" constant="8" id="sWn-Db-8sC"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="gifView" destination="7B5-uI-aIb" id="ajq-VU-rZc"/>
                                             <outlet property="label" destination="hmz-4A-LQU" id="Nfv-qI-X2w"/>

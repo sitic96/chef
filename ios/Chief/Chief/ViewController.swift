@@ -12,7 +12,7 @@ import SwiftyJSON
 import SwiftGifOrigin
 import SwiftyGif
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
 
     @IBOutlet var collectionView: UICollectionView!
@@ -22,6 +22,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        collectionView.frame = CGRect(x:collectionView.frame.origin.x, y:collectionView.frame.origin.y, width:self.view.frame.width, height:collectionView.frame.height)
+        collectionView.reloadData()
+
         getRandomRecipes()
     }
     
@@ -29,11 +33,15 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return recipes.count
     }
     
-    // TODO: Заменить на SwiftyGif
-    // TODO: После изменений бд заменить на реальные гифки
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell: colvwCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! colvwCell
+        cell.frame = CGRect(x:collectionView.frame.origin.x, y:collectionView.frame.origin.y, width:self.view.frame.width, height:self.view.frame.width+150)
+        
+        
+        
+        //cell.gifView.frame = CGRect(x:collectionView.frame.origin.x, y:collectionView.frame.origin.y, width:self.view.frame.width, 
+        //height:self.view.frame.width)
         cell.label.text = recipes[indexPath.row].recipe_name
         cell.user_name.text = recipes[indexPath.row].user_name
         
@@ -76,12 +84,16 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
     func setGifImage(cell:colvwCell, index:Int){
         let url = URL(string: recipes[index].img_link)
-        let data = try? Data(contentsOf: url!)
-        
-        let gifmanager = SwiftyGifManager(memoryLimit:20)
-        let img = UIImage(gifData: data!, levelOfIntegrity: 0.5)
-        OperationQueue.main.addOperation {
-            cell.gifView.setGifImage(img, manager: gifmanager, loopCount:5)
+        if let data = try? Data(contentsOf: url!){
+            
+            let gifmanager = SwiftyGifManager(memoryLimit:20)
+            let img = UIImage(gifData: data, levelOfIntegrity: 0.5)
+            let ratio = img.size.width / img.size.height
+            
+            OperationQueue.main.addOperation {
+                cell.gifView.frame.size = CGSize(width:self.view.frame.width, height:self.view.frame.width);
+                cell.gifView.setGifImage(img, manager: gifmanager, loopCount:5)
+            }
         }
     }
     
