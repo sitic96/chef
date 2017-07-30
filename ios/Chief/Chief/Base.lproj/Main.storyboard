@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -10,76 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--First View Controller-->
-        <scene sceneID="hNz-n2-bh7">
-            <objects>
-                <viewController storyboardIdentifier="FirstViewController" id="9pv-A4-QxB" customClass="FirstViewController" customModule="Chief" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
-                        <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z3B-r8-fb3">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAw-5P-WcA">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="41"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="41" id="RgG-pJ-Zl3"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="9XK-co-EyA">
-                                        <rect key="frame" x="0.0" y="53" width="320" height="246"/>
-                                        <subviews>
-                                            <pickerView contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="q1u-Df-8yF">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
-                                            </pickerView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZE-DA-8Oj">
-                                                <rect key="frame" x="0.0" y="216" width="46" height="30"/>
-                                                <state key="normal" title="Button"/>
-                                                <connections>
-                                                    <action selector="hjefn:" destination="9pv-A4-QxB" eventType="touchDown" id="8Bw-gI-Cn5"/>
-                                                    <segue destination="Myb-Cs-3n6" kind="show" identifier="segueTest" id="9Zw-Bl-LEG"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="MAw-5P-WcA" firstAttribute="top" secondItem="z3B-r8-fb3" secondAttribute="top" constant="86" id="7vJ-pZ-MlV"/>
-                                    <constraint firstAttribute="trailing" secondItem="MAw-5P-WcA" secondAttribute="trailing" id="DCi-PT-0TF"/>
-                                    <constraint firstItem="MAw-5P-WcA" firstAttribute="leading" secondItem="z3B-r8-fb3" secondAttribute="leading" id="V6T-Vp-m19"/>
-                                    <constraint firstItem="9XK-co-EyA" firstAttribute="top" secondItem="z3B-r8-fb3" secondAttribute="top" constant="117" id="ZG9-cB-3QU"/>
-                                    <constraint firstItem="MAw-5P-WcA" firstAttribute="leading" secondItem="9XK-co-EyA" secondAttribute="leading" id="bZy-Ng-O9j"/>
-                                    <constraint firstAttribute="bottom" secondItem="9XK-co-EyA" secondAttribute="bottom" constant="-70" id="cDV-bH-smG"/>
-                                    <constraint firstItem="MAw-5P-WcA" firstAttribute="trailing" secondItem="9XK-co-EyA" secondAttribute="trailing" id="wLn-zM-BjE"/>
-                                </constraints>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="z3B-r8-fb3" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="dcx-z9-kVo"/>
-                            <constraint firstAttribute="trailing" secondItem="z3B-r8-fb3" secondAttribute="trailing" id="qpA-kX-gQc"/>
-                            <constraint firstAttribute="bottom" secondItem="z3B-r8-fb3" secondAttribute="bottom" id="v8x-29-Cvt"/>
-                            <constraint firstItem="z3B-r8-fb3" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="wzY-CN-c5j"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="LPW-uw-Gl3"/>
-                    <connections>
-                        <outlet property="ingredientsChooser" destination="q1u-Df-8yF" id="ts3-UH-N2h"/>
-                        <outlet property="myLabel" destination="MAw-5P-WcA" id="FeT-kM-fFz"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="994" y="-788"/>
-        </scene>
         <!--Recipe-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
@@ -89,7 +19,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MSe-kg-0mB">
@@ -182,31 +112,47 @@
                         <viewControllerLayoutGuide type="bottom" id="PJi-Kg-Hkd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8ii-yp-t9U">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xbj-Gu-KP9">
-                                <rect key="frame" x="30" y="166" width="235" height="210"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h76-sy-HTa">
+                                <rect key="frame" x="16" y="152" width="240" height="265"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgP-AF-vbC">
-                                <rect key="frame" x="30" y="355" width="117" height="67"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cym-Sy-Wki" customClass="UICircularProgressRingView" customModule="UICircularProgressRing">
+                                <rect key="frame" x="16" y="177" width="240" height="240"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                        <real key="value" value="100"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="outerRingColor">
+                                        <color key="value" red="0.1176470588" green="0.69019607839999997" blue="0.61176470589999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="innerRingColor">
+                                        <color key="value" red="0.4431372549" green="0.80392156859999997" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="viewStyle">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="dHg-Ep-6W4"/>
                     <connections>
-                        <outlet property="label" destination="sgP-AF-vbC" id="uf6-cn-XhC"/>
+                        <outlet property="img" destination="h76-sy-HTa" id="1tM-14-GD4"/>
+                        <outlet property="ring1" destination="Cym-Sy-Wki" id="8vE-q4-vhv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fbg-JX-rkh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1787" y="-788"/>
+            <point key="canvasLocation" x="1001.25" y="-788.02816901408448"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -245,7 +191,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="uQH-hq-xjE"/>
+                        <segue destination="Myb-Cs-3n6" kind="relationship" relationship="rootViewController" id="Xhu-Od-gfw"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uxq-gb-NQL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -261,7 +207,7 @@
                         <viewControllerLayoutGuide type="bottom" id="phj-a5-FRU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="D0m-5g-0WQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="AeN-OU-eZ5">
@@ -279,7 +225,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="15V-lx-m1H" customClass="colvwCell" customModule="Chief" customModuleProvider="target">
-                                        <rect key="frame" x="48" y="0.0" width="311" height="421"/>
+                                        <rect key="frame" x="47.5" y="0.0" width="311" height="421"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="311" height="421"/>
@@ -333,6 +279,29 @@
                                                     <rect key="frame" x="0.0" y="8" width="40" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <view clipsSubviews="YES" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zh8-Ht-T66" customClass="UICircularProgressRingView" customModule="UICircularProgressRing">
+                                                    <rect key="frame" x="86" y="146" width="130" height="130"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                            <real key="value" value="100"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="outerRingColor">
+                                                            <color key="value" red="0.92549019607843142" green="0.25098039215686274" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="innerRingColor">
+                                                            <color key="value" red="1" green="0.53052837103865269" blue="0.61536544802386084" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="viewStyle">
+                                                            <integer key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="showFloatingPoint" value="NO"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -349,6 +318,7 @@
                                             <outlet property="label" destination="hmz-4A-LQU" id="Nfv-qI-X2w"/>
                                             <outlet property="likeButton" destination="IAl-l0-RcV" id="FWK-pG-alr"/>
                                             <outlet property="profile_picture" destination="PEj-bt-KVY" id="ZJC-G1-Z2f"/>
+                                            <outlet property="progressRing" destination="Zh8-Ht-T66" id="ubU-zz-jfc"/>
                                             <outlet property="saveButton" destination="ikH-9N-Zl3" id="AdO-Fg-JuZ"/>
                                             <outlet property="user_name" destination="PJZ-mE-PuO" id="gqH-Qg-zIX"/>
                                         </connections>

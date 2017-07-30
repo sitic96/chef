@@ -43,8 +43,8 @@ class FirstViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            let svc = segue.destination as! SearchResultsController;
-            svc.choosedValue = pickerData
+            //let svc = segue.destination as! SearchResultsController;
+            //svc.choosedValue = pickerData
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

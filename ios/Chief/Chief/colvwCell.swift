@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UICircularProgressRing
 
 class colvwCell: UICollectionViewCell {
     @IBOutlet var label: UILabel!
@@ -15,6 +16,7 @@ class colvwCell: UICollectionViewCell {
     @IBOutlet var saveButton: UIButton!
     @IBOutlet var user_name: UILabel!
     @IBOutlet var profile_picture: UIImageView!
+    @IBOutlet var progressRing: UICircularProgressRingView!
     
     var isLiked : Bool? = false
     var isSaved : Bool? = false
@@ -38,6 +40,13 @@ class colvwCell: UICollectionViewCell {
         } else {
             saveButton.setImage(UIImage(named: "ic_save"), for: .normal)
             isSaved = true
+        }
+    }
+    
+    func controlProgress(value:Int){
+        progressRing.setProgress(value: CGFloat(value), animationDuration: 0)
+        if value>=100 {
+            progressRing.isHidden=true
         }
     }
     

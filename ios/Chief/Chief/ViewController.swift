@@ -1,4 +1,3 @@
-//
 //  ViewController.swift
 //  Chief
 //
@@ -7,12 +6,15 @@
 //
 
 import UIKit
+import AFNetworking
 import Foundation
 import SwiftyJSON
 import SwiftGifOrigin
 import SwiftyGif
+import Alamofire
+import UICircularProgressRing
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICircularProgressRingDelegate {
     
 
     @IBOutlet var collectionView: UICollectionView!
@@ -25,7 +27,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         collectionView.frame = CGRect(x:collectionView.frame.origin.x, y:collectionView.frame.origin.y, width:self.view.frame.width, height:collectionView.frame.height)
         collectionView.reloadData()
-
+        
         getRandomRecipes()
     }
     
@@ -38,13 +40,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let cell: colvwCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! colvwCell
         cell.frame = CGRect(x:collectionView.frame.origin.x, y:collectionView.frame.origin.y, width:self.view.frame.width, height:self.view.frame.width+150)
         
+        cell.progressRing.animationStyle = kCAMediaTimingFunctionLinear
+        cell.progressRing.delegate = self
         
-        
-        //cell.gifView.frame = CGRect(x:collectionView.frame.origin.x, y:collectionView.frame.origin.y, width:self.view.frame.width, 
-        //height:self.view.frame.width)
         cell.label.text = recipes[indexPath.row].recipe_name
         cell.user_name.text = recipes[indexPath.row].user_name
         
+        cell.gifView.frame.size = CGSize(width:self.view.frame.width, height:self.view.frame.width);
         setGifImage(cell:cell, index:indexPath.row)
         setProfileImage(cell: cell, index: indexPath.row)
         return cell
@@ -72,11 +74,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             DispatchQueue.main.async(execute: {
                 self.recipe = CompleteRecipe(json:json)
                 self.recipes.append(self.recipe!)
-            /*for (_, object) in json {
-                
-                self.recipes.append(Recipe(json: object))
-            }
- */
                     self.collectionView.reloadData()
             })
         }
@@ -84,16 +81,18 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
     func setGifImage(cell:colvwCell, index:Int){
         let url = URL(string: recipes[index].img_link)
-        if let data = try? Data(contentsOf: url!){
-            
-            let gifmanager = SwiftyGifManager(memoryLimit:20)
-            let img = UIImage(gifData: data, levelOfIntegrity: 0.5)
-            let ratio = img.size.width / img.size.height
-            
-            OperationQueue.main.addOperation {
-                cell.gifView.frame.size = CGSize(width:self.view.frame.width, height:self.view.frame.width);
-                cell.gifView.setGifImage(img, manager: gifmanager, loopCount:5)
+        
+        Alamofire.request("http://i.imgur.com/0VicbsO.gif")
+            .downloadProgress {progress in cell.controlProgress(value: Int(progress.fractionCompleted*100))
             }
+            .responseData { response in
+                if let data = response.result.value {
+                    let gifmanager = SwiftyGifManager(memoryLimit:20)
+                    let image = UIImage(gifData: data, levelOfIntegrity: 0.5)
+                    OperationQueue.main.addOperation {
+                        cell.gifView.setGifImage(image, manager: gifmanager, loopCount:5)
+                    }
+                }
         }
     }
     
@@ -107,4 +106,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
     }
     
+    func finishedUpdatingProgress(forRing ring: UICircularProgressRingView) {
+        //ring.isHidden=true
+    }
 }
