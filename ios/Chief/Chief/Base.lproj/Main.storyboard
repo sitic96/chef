@@ -63,7 +63,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="372" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IGM-OW-s3U" id="cAR-Nu-UgN">
-                                                    <rect key="frame" x="0.0" y="0.0" width="372" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="372" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
@@ -225,7 +225,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="15V-lx-m1H" customClass="colvwCell" customModule="Chief" customModuleProvider="target">
-                                        <rect key="frame" x="47.5" y="0.0" width="311" height="421"/>
+                                        <rect key="frame" x="48" y="0.0" width="311" height="421"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="311" height="421"/>

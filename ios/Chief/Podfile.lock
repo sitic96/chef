@@ -1,0 +1,61 @@
+PODS:
+  - AFNetworking (2.5.4):
+    - AFNetworking/NSURLConnection (= 2.5.4)
+    - AFNetworking/NSURLSession (= 2.5.4)
+    - AFNetworking/Reachability (= 2.5.4)
+    - AFNetworking/Security (= 2.5.4)
+    - AFNetworking/Serialization (= 2.5.4)
+    - AFNetworking/UIKit (= 2.5.4)
+  - AFNetworking/NSURLConnection (2.5.4):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.5.4):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.5.4)
+  - AFNetworking/Security (2.5.4)
+  - AFNetworking/Serialization (2.5.4)
+  - AFNetworking/UIKit (2.5.4):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - Alamofire (4.4.0)
+  - SwiftGifOrigin (1.6.1)
+  - SwiftyGif (3.0.3)
+  - SwiftyJSON (3.1.4)
+  - UICircularProgressRing (1.3.0)
+
+DEPENDENCIES:
+  - AFNetworking (~> 2.5)
+  - Alamofire (~> 4.4)
+  - SwiftGifOrigin (~> 1.6.1)
+  - SwiftyGif (from `https://github.com/kirualex/SwiftyGif.git`)
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
+  - UICircularProgressRing
+
+EXTERNAL SOURCES:
+  SwiftyGif:
+    :git: https://github.com/kirualex/SwiftyGif.git
+  SwiftyJSON:
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+CHECKOUT OPTIONS:
+  SwiftyGif:
+    :commit: f70b75bef7cda3e87e3994c415aba0e1da2b104b
+    :git: https://github.com/kirualex/SwiftyGif.git
+  SwiftyJSON:
+    :commit: 619fba2d551b678aa0b6ceff1c863677f0eb7ff7
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+SPEC CHECKSUMS:
+  AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  SwiftGifOrigin: d6679d3ebe9df2e049a84bc52582635107b581f6
+  SwiftyGif: 1235f55bdb61cb157fad1d7728507fee602a5150
+  SwiftyJSON: 05cf0e98a950e2ba343735264f5a96b81e755d00
+  UICircularProgressRing: cbeed8321bd277943b3cb5412a1ddd50dc40c755
+
+PODFILE CHECKSUM: 32ef7cf4ecebc93838493c24a2dca62ebed57a25
+
+COCOAPODS: 1.2.0
