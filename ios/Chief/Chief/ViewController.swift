@@ -82,7 +82,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func setGifImage(cell:colvwCell, index:Int){
         let url = URL(string: recipes[index].img_link)
         
-        Alamofire.request("http://i.imgur.com/0VicbsO.gif")
+        Alamofire.request(url!)
             .downloadProgress {progress in cell.controlProgress(value: Int(progress.fractionCompleted*100))
             }
             .responseData { response in

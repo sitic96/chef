@@ -19,7 +19,7 @@ public class RecipeResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
     @Path("byid/{id}")
-    public Response getUserById(@PathParam("id") BigInteger id) {
+    public Response getRecipeById(@PathParam("id") BigInteger id) {
         try {
             CompleteRecipe recipe = RecipeManager.class.newInstance().getRecipeById(id);
             return Response.status(Response.Status.OK).entity(recipe).build();

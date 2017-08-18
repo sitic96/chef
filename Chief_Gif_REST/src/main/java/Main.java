@@ -10,6 +10,6 @@ public class Main {
     public static void main(final String[] args) throws Exception {
 
         BigInteger bigInteger = BigInteger.valueOf(1);
-        RecipeManager.class.newInstance().getRecipeById(bigInteger);
+        RecipeManager.class.newInstance().getCompleteRecipeById(bigInteger);
     }
 }
