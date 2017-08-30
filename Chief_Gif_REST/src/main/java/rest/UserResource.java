@@ -86,4 +86,20 @@ public class UserResource {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
     }
+
+    @POST
+    @Path("/liked")
+    @Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
+    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
+    public Response liked(BigInteger userId, BigInteger postId) {
+        try {
+            if (UserManager.class.newInstance().userLiked(userId, postId)) {
+                return Response.status(Response.Status.OK).build();
+            } else return Response.status(Response.Status.BAD_REQUEST).build();
+        } catch (InstantiationException e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        } catch (IllegalAccessException e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
+    }
 }

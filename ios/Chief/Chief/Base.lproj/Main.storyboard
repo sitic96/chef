@@ -244,13 +244,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="311" height="421"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmz-4A-LQU">
-                                                    <rect key="frame" x="8" y="325" width="270" height="30"/>
-                                                    <color key="tintColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7B5-uI-aIb">
                                                     <rect key="frame" x="0.0" y="64" width="289" height="258"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -281,14 +274,6 @@
                                                         <action selector="saveButtonClicked:" destination="15V-lx-m1H" eventType="touchDown" id="Bcc-nr-TUP"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="skq-Sz-skX">
-                                                    <rect key="frame" x="259" y="351" width="30" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
-                                                    <color key="tintColor" red="0.30609558009999999" green="0.99835759400000001" blue="0.38320404299999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <state key="normal" title="X">
-                                                        <color key="titleColor" red="0.95686274510000002" green="0.26274509800000001" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </state>
-                                                </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_account_circle" translatesAutoresizingMaskIntoConstraints="NO" id="PEj-bt-KVY">
                                                     <rect key="frame" x="0.0" y="8" width="40" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -316,21 +301,34 @@
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="showFloatingPoint" value="NO"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="orZ-fC-NJp">
+                                                    <rect key="frame" x="8" y="380" width="62" height="26"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmz-4A-LQU">
+                                                    <rect key="frame" x="8" y="330" width="270" height="30"/>
+                                                    <color key="tintColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailingMargin" secondItem="skq-Sz-skX" secondAttribute="trailing" constant="15" id="JjA-aE-bKp"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="IAl-l0-RcV" secondAttribute="bottom" constant="8" id="KTo-oJ-RhZ"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="ikH-9N-Zl3" secondAttribute="bottom" constant="8" id="Pap-gU-Duh"/>
-                                            <constraint firstItem="ikH-9N-Zl3" firstAttribute="top" secondItem="hmz-4A-LQU" secondAttribute="bottom" constant="8" id="RLu-Rh-Mi4"/>
-                                            <constraint firstItem="ikH-9N-Zl3" firstAttribute="leading" secondItem="IAl-l0-RcV" secondAttribute="trailing" constant="15" id="Ywc-cs-xaI"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="skq-Sz-skX" secondAttribute="bottom" constant="8" id="sWn-Db-8sC"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="IAl-l0-RcV" secondAttribute="bottom" constant="31" id="KTo-oJ-RhZ"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="orZ-fC-NJp" secondAttribute="bottom" constant="7" id="NzU-G2-HDM"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="ikH-9N-Zl3" secondAttribute="bottom" constant="31" id="Pap-gU-Duh"/>
+                                            <constraint firstItem="ikH-9N-Zl3" firstAttribute="top" secondItem="hmz-4A-LQU" secondAttribute="bottom" constant="2" id="RLu-Rh-Mi4"/>
+                                            <constraint firstItem="ikH-9N-Zl3" firstAttribute="leading" secondItem="IAl-l0-RcV" secondAttribute="trailing" constant="14" id="Ywc-cs-xaI"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="gifView" destination="7B5-uI-aIb" id="ajq-VU-rZc"/>
                                             <outlet property="label" destination="hmz-4A-LQU" id="Nfv-qI-X2w"/>
                                             <outlet property="likeButton" destination="IAl-l0-RcV" id="FWK-pG-alr"/>
+                                            <outlet property="liked" destination="orZ-fC-NJp" id="7oc-Wf-Fh9"/>
                                             <outlet property="profile_picture" destination="PEj-bt-KVY" id="ZJC-G1-Z2f"/>
                                             <outlet property="progressRing" destination="Zh8-Ht-T66" id="ubU-zz-jfc"/>
                                             <outlet property="saveButton" destination="ikH-9N-Zl3" id="AdO-Fg-JuZ"/>

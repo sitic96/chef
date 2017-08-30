@@ -18,6 +18,7 @@ class colvwCell: UICollectionViewCell {
     @IBOutlet var profile_picture: UIImageView!
     @IBOutlet var progressRing: UICircularProgressRingView!
     
+    @IBOutlet var liked: UILabel!
     var isLiked : Bool? = false
     var isSaved : Bool? = false
     
@@ -48,6 +49,15 @@ class colvwCell: UICollectionViewCell {
         if value>=100 {
             progressRing.isHidden=true
         }
+    }
+    
+    func setLiked(){
+        likeButton.setImage(UIImage(named: "ic_favorite"), for: .normal)
+        isLiked = true
+    }
+    
+    func setLikesCount(value:Int32){
+        self.liked.text = "Liked: " + String(value)
     }
     
 }

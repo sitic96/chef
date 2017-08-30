@@ -27,4 +27,16 @@ public class RecipeResource {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
     }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
+    @Path("complete/byid/{id}")
+    public Response getCompleteRecipeById(@PathParam("id") BigInteger id) {
+        try {
+            CompleteRecipe recipe = RecipeManager.class.newInstance().getCompleteRecipeById(id);
+            return Response.status(Response.Status.OK).entity(recipe).build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+    }
 }

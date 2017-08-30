@@ -45,6 +45,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         cell.label.text = recipes[indexPath.row].recipe_name
         cell.user_name.text = recipes[indexPath.row].user_name
+        cell.setLikesCount(value: recipes[indexPath.row].likes)
+        
+        if recipes[indexPath.row].liked == true {
+            cell.setLiked()
+        }
         
         cell.gifView.frame.size = CGSize(width:self.view.frame.width, height:self.view.frame.width);
         setGifImage(cell:cell, index:indexPath.row)

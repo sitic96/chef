@@ -14,8 +14,8 @@
     <schema id="4" parent="1" name="public">
       <object-id>2200</object-id>
       <visible>1</visible>
-      <introspection-state-number>971</introspection-state-number>
-      <introspection-timestamp>2017-08-18.21:11:44.108</introspection-timestamp>
+      <introspection-state-number>973</introspection-state-number>
+      <introspection-timestamp>2017-08-20.23:38:34.054</introspection-timestamp>
     </schema>
     <schema id="5" parent="1" name="pg_catalog">
       <object-id>11</object-id>
@@ -76,8 +76,8 @@
       <state-number>913</state-number>
     </table>
     <routine id="21" parent="4" name="getcompleterecipe">
-      <object-id>32786</object-id>
-      <state-number>971</state-number>
+      <object-id>32787</object-id>
+      <state-number>973</state-number>
       <routine-kind>FUNCTION</routine-kind>
       <returns-set>1</returns-set>
     </routine>
@@ -303,7 +303,7 @@ recipe_id</columns>
     </argument>
     <argument id="60" parent="21">
       <direction>RESULT</direction>
-      <data-type>table(recipe_id numeric, recipe_name varchar, user_name varchar, likes integer, liked text)|0</data-type>
+      <data-type>table(recipe_id numeric, recipe_name varchar, img_link varchar, user_name varchar, profile_picture varchar, likes integer, liked text)|0</data-type>
     </argument>
   </database-model>
 </dataSource>

@@ -46,7 +46,7 @@ class RestApiManager: NSObject {
     }
     
     func getRecipe(onCompletion: @escaping (JSON) -> Void){
-        let route = "http://localhost:8080/rest_gif/recipes/byid/7"
+        let route = "http://localhost:8080/rest_gif/recipes/complete/byid/2"
         makeHTTPGetRequest(path: route, onCompletion: { json, err in
             onCompletion(json as JSON)
         })

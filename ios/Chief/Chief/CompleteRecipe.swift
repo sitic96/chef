@@ -17,6 +17,8 @@ class CompleteRecipe {
     var user_id: Int16
     var recipe_name :String!
     var user_name :String!
+    var likes : Int32!
+    var liked : Bool! = false
     
     
     required init(json: JSON) {
@@ -34,7 +36,10 @@ class CompleteRecipe {
         user_id = json["user_id"].int16Value
         recipe_name = json["recipe_name"].stringValue
         user_name = json["user_name"].stringValue
-        
+        likes = json["likes"].int32Value
+        if json["liked"].stringValue == "LIKED" {
+            self.liked = true;
+        }
     }
     
     init() {
@@ -45,5 +50,7 @@ class CompleteRecipe {
         user_id = Int16()
         recipe_name = String()
         user_name = String()
+        likes = Int32()
+        liked = Bool()
     }
 }

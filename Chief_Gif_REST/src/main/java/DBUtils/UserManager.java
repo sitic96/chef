@@ -2,8 +2,10 @@ package DBUtils;
 
 import data.Recipe;
 import data.User;
+import data.UsersLikes;
 import org.hibernate.*;
 import org.hibernate.criterion.Restrictions;
+import org.jetbrains.annotations.NotNull;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -99,22 +101,7 @@ public class UserManager {
 
     private boolean addUser(User user) {
         Session session = Connector.getConnector().getSession();
-        try {
-            session.beginTransaction();
-            session.save(user);
-            session.getTransaction().commit();
-            return true;
-        } catch (HibernateException e) {
-            if (session.getTransaction() != null) {
-                session.getTransaction().rollback();
-            }
-            return false;
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            session.close();
-            return false;
-        }
+        return this.save(user);
     }
 
     private boolean removeUser(User user) {
@@ -144,5 +131,33 @@ public class UserManager {
         user.setProfilePicture(url);
 
         return user;
+    }
+
+    private boolean save(@NotNull Object o) {
+        Session session = Connector.getConnector().getSession();
+        try {
+            session.beginTransaction();
+            session.save(o);
+            session.getTransaction().commit();
+            return true;
+        } catch (HibernateException e) {
+            if (session.getTransaction() != null) {
+                session.getTransaction().rollback();
+            }
+            return false;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+            return false;
+        }
+    }
+
+    public boolean userLiked(@NotNull BigInteger userId, @NotNull BigInteger postId) {
+        UsersLikes usersLikes = new UsersLikes();
+        usersLikes.setUserId(userId);
+        usersLikes.setRecipeId(postId);
+
+        return this.save(usersLikes);
     }
 }

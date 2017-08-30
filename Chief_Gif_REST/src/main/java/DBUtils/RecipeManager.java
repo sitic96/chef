@@ -34,10 +34,10 @@ public class RecipeManager {
     public CompleteRecipe getCompleteRecipeById(@NotNull BigInteger id) {
         Session session = Connector.getConnector().getSession();
         try {
-            String sql = "SELECT recipe_id, recipe_name, user_name, likes, liked from getCompleteRECIPE(1);";
+            String sql = "SELECT recipe_id, recipe_name, img_link, user_name, profile_picture, likes, liked from getCompleteRECIPE(" + id + ");";
             List<CompleteRecipe> recipes = session.createSQLQuery(sql).setResultTransformer(Transformers.aliasToBean(CompleteRecipe.class)).list();
 
-            return null;
+            return recipes.get(0);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
