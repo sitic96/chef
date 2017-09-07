@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import Alamofire
 
 typealias ServiceResponse = (JSON, NSError?) -> Void
 
@@ -15,7 +16,7 @@ class RestApiManager: NSObject {
     static let sharedInstance = RestApiManager()
     
     let URL = "http://MacBook-Pro-Sitora.local:8181/rest/"
-    let baseURL = "http://MacBook-Pro-Sitora.local:8181/rest/recipes/28"
+    let baseURL = "http://localhost:8080/rest_gif"
     
     func getAllIngredients(onCompletion: @escaping (JSON) -> Void){
         let route = URL + "ingredient/all"
@@ -67,6 +68,21 @@ class RestApiManager: NSObject {
             }
         })
         task.resume()
+    }
+    
+    func login(login:String, password:String) -> Bool{
+        let parameters: Parameters = [
+            "login": login,
+            "password": password,
+        ]
+        
+        Alamofire.request(baseURL+"/users/login", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        .responseJSON{
+            response in print(response.response as Any)
+            var statusCode = (response.response?.statusCode)!
+            
+        }
+        
     }
     
     // MARK: Perform a POST Request

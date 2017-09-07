@@ -7,12 +7,12 @@ import java.math.BigInteger;
  * Created by sitora on 20.07.17.
  */
 @Entity
-@Table(name = "users_likes", schema = "public", catalog = "Chief")
+@Table(name = "users_likes", schema = "public", catalog = "chef")
 @IdClass(UsersLikesPK.class)
 public class UsersLikes {
     private BigInteger id;
-    private BigInteger userId;
-    private BigInteger recipeId;
+    private Integer userId;
+    private Integer recipeId;
 
     @Basic
     @Column(name = "id", nullable = false, precision = 0)
@@ -26,21 +26,21 @@ public class UsersLikes {
 
     @Id
     @Column(name = "user_id", nullable = false, precision = 0)
-    public BigInteger getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(BigInteger userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
     @Id
     @Column(name = "recipe_id", nullable = false, precision = 0)
-    public BigInteger getRecipeId() {
+    public Integer getRecipeId() {
         return recipeId;
     }
 
-    public void setRecipeId(BigInteger recipeId) {
+    public void setRecipeId(Integer recipeId) {
         this.recipeId = recipeId;
     }
 

@@ -12,6 +12,7 @@ public class User {
     private BigInteger user_id;
     private String user_name;
     private String profilePicture;
+    private String password;
 
     public User(BigInteger id, String name, String profilePicture) {
         this.user_id = id;
@@ -52,6 +53,16 @@ public class User {
 
     public void setProfilePicture(String profilePicture) {
         this.profilePicture = profilePicture;
+    }
+
+    @Basic
+    @Column(name = "password", nullable = false, length = -1)
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

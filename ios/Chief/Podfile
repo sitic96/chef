@@ -9,4 +9,5 @@ pod 'SwiftyGif', :git => 'https://github.com/kirualex/SwiftyGif.git'
 pod 'AFNetworking', '~> 2.5'
 pod 'UICircularProgressRing'
 pod 'Alamofire', '~> 4.4'
+pod 'Locksmith'
 end

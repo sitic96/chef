@@ -3,6 +3,7 @@ package DBUtils;
 import data.CompleteRecipe;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
 import org.hibernate.transform.Transformers;
 import org.jetbrains.annotations.NotNull;

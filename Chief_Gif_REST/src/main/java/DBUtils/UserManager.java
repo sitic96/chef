@@ -101,7 +101,7 @@ public class UserManager {
 
     private boolean addUser(User user) {
         Session session = Connector.getConnector().getSession();
-        return this.save(user);
+        return this.saveHibernateEntity(user);
     }
 
     private boolean removeUser(User user) {
@@ -133,7 +133,7 @@ public class UserManager {
         return user;
     }
 
-    private boolean save(@NotNull Object o) {
+    private boolean saveHibernateEntity(@NotNull Object o) {
         Session session = Connector.getConnector().getSession();
         try {
             session.beginTransaction();
@@ -147,17 +147,32 @@ public class UserManager {
             return false;
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         } finally {
             session.close();
-            return false;
         }
     }
 
-    public boolean userLiked(@NotNull BigInteger userId, @NotNull BigInteger postId) {
+    public boolean userLiked(Integer userId, Integer postId) {
         UsersLikes usersLikes = new UsersLikes();
         usersLikes.setUserId(userId);
         usersLikes.setRecipeId(postId);
 
-        return this.save(usersLikes);
+        return this.saveHibernateEntity(usersLikes);
+    }
+
+    public boolean login(@NotNull String login, String password) {
+        Session session = Connector.getConnector().getSession();
+        try {
+            Criteria criteria = session.createCriteria(User.class);
+            User user = (User) criteria.add(Restrictions.eq("user_name", login)).add(Restrictions.eq("password", password.toString()))
+                    .uniqueResult();
+            if (user == null) {
+                return false;
+            }
+            return true;
+        } finally {
+            session.close();
+        }
     }
 }

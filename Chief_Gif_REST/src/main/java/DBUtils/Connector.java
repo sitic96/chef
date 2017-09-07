@@ -3,6 +3,7 @@ package DBUtils;
 import data.Category;
 import data.Recipe;
 import data.User;
+import data.UsersLikes;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -22,7 +23,7 @@ public class Connector {
     static {
         try {
             Configuration configuration = new Configuration();
-            configuration.addAnnotatedClass(User.class).addAnnotatedClass(Recipe.class).addAnnotatedClass(Category.class);
+            configuration.addAnnotatedClass(User.class).addAnnotatedClass(Recipe.class).addAnnotatedClass(Category.class).addAnnotatedClass(UsersLikes.class);
             configuration.configure();
             serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
             ourSessionFactory = configuration.buildSessionFactory(serviceRegistry);

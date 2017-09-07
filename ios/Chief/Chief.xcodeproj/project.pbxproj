@@ -10,6 +10,7 @@
 		0B0E045FC4AC6AA485146332 /* Pods_Chief.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CCE6AB3155073BF19AF6660 /* Pods_Chief.framework */; };
 		4923EC161E6B5AB600A9F673 /* RestApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4923EC151E6B5AB600A9F673 /* RestApiManager.swift */; };
 		4923EC181E6B5C1D00A9F673 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4923EC171E6B5C1D00A9F673 /* Recipe.swift */; };
+		4967A15E1F6092D600443A7F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4967A15D1F6092D600443A7F /* LoginViewController.swift */; };
 		49734F171F24DA9800DEA2BA /* CompleteRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49734F161F24DA9800DEA2BA /* CompleteRecipe.swift */; };
 		4983057D1F18267200A13F38 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4983057C1F18267200A13F38 /* Images.xcassets */; };
 		4988EB941E807E4D000CAE40 /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4988EB931E807E4D000CAE40 /* SearchResultsController.swift */; };
@@ -47,6 +48,7 @@
 		2CCE6AB3155073BF19AF6660 /* Pods_Chief.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chief.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4923EC151E6B5AB600A9F673 /* RestApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestApiManager.swift; sourceTree = "<group>"; };
 		4923EC171E6B5C1D00A9F673 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Recipe.swift; path = ../Recipe.swift; sourceTree = "<group>"; };
+		4967A15D1F6092D600443A7F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		49734F161F24DA9800DEA2BA /* CompleteRecipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteRecipe.swift; sourceTree = "<group>"; };
 		4983057C1F18267200A13F38 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4988EB931E807E4D000CAE40 /* SearchResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				49AB83BF1E6B35E3007B9180 /* LaunchScreen.storyboard */,
 				49AB83C21E6B35E3007B9180 /* Info.plist */,
 				498CC3421F1436BE00D38654 /* ViewController.swift */,
+				4967A15D1F6092D600443A7F /* LoginViewController.swift */,
 			);
 			path = Chief;
 			sourceTree = "<group>";
@@ -333,9 +336,24 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Chief/Pods-Chief-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Locksmith/Locksmith.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftGifOrigin/SwiftGifOrigin.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyGif/SwiftyGif.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/UICircularProgressRing/UICircularProgressRing.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Locksmith.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftGifOrigin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyGif.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICircularProgressRing.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -363,13 +381,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Chief-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -389,6 +410,7 @@
 				498CC3431F1436BE00D38654 /* ViewController.swift in Sources */,
 				49734F171F24DA9800DEA2BA /* CompleteRecipe.swift in Sources */,
 				49AB83B71E6B35E3007B9180 /* FavoriteRecipesController.swift in Sources */,
+				4967A15E1F6092D600443A7F /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

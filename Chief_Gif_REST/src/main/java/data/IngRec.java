@@ -7,7 +7,7 @@ import java.math.BigInteger;
  * Created by sitora on 15.07.17.
  */
 @Entity
-@Table(name = "Ing_Rec", schema = "public", catalog = "Chief")
+@Table(name = "Ing_Rec", schema = "public", catalog = "chef")
 @IdClass(IngRecPK.class)
 public class IngRec {
     private BigInteger id;
