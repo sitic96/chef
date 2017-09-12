@@ -1,5 +1,6 @@
 package DBUtils;
 
+import DBUtils.exceptions.ResourceAlreadyExistException;
 import data.Recipe;
 import data.User;
 import data.UsersLikes;
@@ -173,6 +174,20 @@ public class UserManager {
             return true;
         } finally {
             session.close();
+        }
+    }
+
+    public boolean signup(@NotNull String login, @NotNull String password) {
+        User user = new User();
+        user.setUser_name(login);
+        user.setPassword(password);
+        Query query = Connector.getConnector().getSession().
+                createQuery("select 1 from User u where u.user_name = :key");
+        query.setString("key", user.getUser_name());
+        if (query.uniqueResult() != null) {
+            throw new ResourceAlreadyExistException("Sorry, user " + user.getUser_name() + " already exist.");
+        } else {
+            return this.saveHibernateEntity(user);
         }
     }
 }

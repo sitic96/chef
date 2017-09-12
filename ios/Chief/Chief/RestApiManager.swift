@@ -70,22 +70,54 @@ class RestApiManager: NSObject {
         task.resume()
     }
     
-    func login(login:String, password:String) -> Bool{
+    func login(login:String, password:String, completionHandler: @escaping (Bool) -> ()){
         let parameters: Parameters = [
             "login": login,
             "password": password,
-        ]
+            ]
         
         Alamofire.request(baseURL+"/users/login", method: .post, parameters: parameters, encoding: JSONEncoding.default)
-        .responseJSON{
-            response in print(response.response as Any)
-            var statusCode = (response.response?.statusCode)!
-            
+            .responseJSON{
+                response in print(response.response as Any)
+                var statusCode = (response.response?.statusCode)!
+                switch statusCode {
+                case 404:
+                    completionHandler(false)
+                    
+                case 200 :
+                    completionHandler(true)
+                default:
+                    completionHandler(false)
+                }
+                
         }
         
     }
     
-    // MARK: Perform a POST Request
+    func signup(login:String, password:String,  completionHandler: @escaping (Bool, String?) -> ())  {
+        let parameters: Parameters = [
+            "login": login,
+            "password": password,
+            ]
+        Alamofire.request(baseURL+"/users/signup", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .responseJSON{
+                response in print(response.response as Any)
+                var statusCode = (response.response?.statusCode)!
+                switch statusCode {
+                case 409:
+                    if let data = response.data {
+                        let message = String(data: data, encoding: String.Encoding.utf8)
+                        completionHandler(false, message)
+                    }
+                case 200 :
+                    completionHandler(true, nil)
+                default:
+                    completionHandler(false, "Error")
+                }
+        }
+    }
+    
+    //     MARK: Perform a POST Request
     private func makeHTTPPostRequest(path: String, body: [String: AnyObject], onCompletion: @escaping ServiceResponse) {
         let request = NSMutableURLRequest(url: NSURL(string: path)! as URL)
         

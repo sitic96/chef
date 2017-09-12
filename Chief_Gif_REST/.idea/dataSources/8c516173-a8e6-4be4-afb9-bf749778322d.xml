@@ -12,36 +12,36 @@
     </database>
     <schema id="4" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2017-09-06.00:10:49.394</IntrospectionTimestamp>
-      <IntrospectionStateNumber>908</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2017-09-11.21:40:43.044</IntrospectionTimestamp>
+      <IntrospectionStateNumber>909</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
     <schema id="5" parent="2" name="pg_catalog">
       <ObjectId>11</ObjectId>
-      <IntrospectionTimestamp>2017-09-06.00:10:49.394</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2017-09-11.21:40:43.044</IntrospectionTimestamp>
       <IntrospectionStateNumber>817</IntrospectionStateNumber>
       <Visible>1</Visible>
     </schema>
     <schema id="6" parent="2" name="pg_toast">
       <ObjectId>99</ObjectId>
-      <IntrospectionTimestamp>2017-09-06.00:10:49.394</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2017-09-11.21:40:43.044</IntrospectionTimestamp>
       <IntrospectionStateNumber>878</IntrospectionStateNumber>
       <Visible>1</Visible>
     </schema>
     <schema id="7" parent="2" name="pg_temp_1">
       <ObjectId>11848</ObjectId>
-      <IntrospectionTimestamp>2017-09-06.00:10:49.394</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2017-09-11.21:40:43.044</IntrospectionTimestamp>
       <Visible>1</Visible>
     </schema>
     <schema id="8" parent="2" name="pg_toast_temp_1">
       <ObjectId>11849</ObjectId>
-      <IntrospectionTimestamp>2017-09-06.00:10:49.394</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2017-09-11.21:40:43.044</IntrospectionTimestamp>
       <Visible>1</Visible>
     </schema>
     <schema id="9" parent="2" name="information_schema">
       <ObjectId>12381</ObjectId>
-      <IntrospectionTimestamp>2017-09-06.00:10:49.394</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2017-09-11.21:40:43.044</IntrospectionTimestamp>
       <IntrospectionStateNumber>815</IntrospectionStateNumber>
       <Visible>1</Visible>
     </schema>
@@ -27547,7 +27547,8 @@ rec_id</ColNames>
     <column id="3881" parent="17" name="profile_picture">
       <Position>3</Position>
       <DataType>text|0</DataType>
-      <StateNumber>874</StateNumber>
+      <StateNumber>909</StateNumber>
+      <DefaultExpression>&apos;https://d30y9cdsu7xlg0.cloudfront.net/png/17239-200.png&apos;::text</DefaultExpression>
     </column>
     <column id="3882" parent="17" name="password">
       <Position>5</Position>

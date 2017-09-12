@@ -10,6 +10,7 @@
 		0B0E045FC4AC6AA485146332 /* Pods_Chief.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CCE6AB3155073BF19AF6660 /* Pods_Chief.framework */; };
 		4923EC161E6B5AB600A9F673 /* RestApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4923EC151E6B5AB600A9F673 /* RestApiManager.swift */; };
 		4923EC181E6B5C1D00A9F673 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4923EC171E6B5C1D00A9F673 /* Recipe.swift */; };
+		495472241F647D1800D579A7 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495472231F647D1800D579A7 /* RegistrationViewController.swift */; };
 		4967A15E1F6092D600443A7F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4967A15D1F6092D600443A7F /* LoginViewController.swift */; };
 		49734F171F24DA9800DEA2BA /* CompleteRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49734F161F24DA9800DEA2BA /* CompleteRecipe.swift */; };
 		4983057D1F18267200A13F38 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4983057C1F18267200A13F38 /* Images.xcassets */; };
@@ -48,6 +49,7 @@
 		2CCE6AB3155073BF19AF6660 /* Pods_Chief.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chief.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4923EC151E6B5AB600A9F673 /* RestApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestApiManager.swift; sourceTree = "<group>"; };
 		4923EC171E6B5C1D00A9F673 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Recipe.swift; path = ../Recipe.swift; sourceTree = "<group>"; };
+		495472231F647D1800D579A7 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegistrationViewController.swift; path = Chief/RegistrationViewController.swift; sourceTree = "<group>"; };
 		4967A15D1F6092D600443A7F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		49734F161F24DA9800DEA2BA /* CompleteRecipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteRecipe.swift; sourceTree = "<group>"; };
 		4983057C1F18267200A13F38 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		49AB83A81E6B35E3007B9180 = {
 			isa = PBXGroup;
 			children = (
+				495472231F647D1800D579A7 /* RegistrationViewController.swift */,
 				49AB83B31E6B35E3007B9180 /* Chief */,
 				49AB83CA1E6B35E3007B9180 /* ChiefTests */,
 				49AB83D51E6B35E3007B9180 /* ChiefUITests */,
@@ -406,6 +409,7 @@
 				4988EB941E807E4D000CAE40 /* SearchResultsController.swift in Sources */,
 				4923EC161E6B5AB600A9F673 /* RestApiManager.swift in Sources */,
 				498CC3451F14405F00D38654 /* colvwCell.swift in Sources */,
+				495472241F647D1800D579A7 /* RegistrationViewController.swift in Sources */,
 				4923EC181E6B5C1D00A9F673 /* Recipe.swift in Sources */,
 				498CC3431F1436BE00D38654 /* ViewController.swift in Sources */,
 				49734F171F24DA9800DEA2BA /* CompleteRecipe.swift in Sources */,

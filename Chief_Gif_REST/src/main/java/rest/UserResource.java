@@ -118,4 +118,21 @@ public class UserResource {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
     }
+
+    @POST
+    @Path("/signup")
+    @Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
+    @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
+    public Response signup(UserLoginWrapper user) {
+        try {
+            if (UserManager.class.newInstance().signup(user.getLogin(), user.getPassword())) {
+                return Response.status(Response.Status.OK).build();
+            } else return Response.status(503).build();
+        } catch (InstantiationException e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        } catch (IllegalAccessException e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
+
+    }
 }

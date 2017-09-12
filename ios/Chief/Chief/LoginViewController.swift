@@ -9,7 +9,7 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    
     @IBOutlet weak var userLogin: UITextField!
     @IBOutlet weak var userPassword: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -17,10 +17,10 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -34,9 +34,18 @@ class LoginViewController: UIViewController {
             return self.printErrorMessage(message: "Empty password")
         }
         
-        RestApiManager.sharedInstance.login(login: user_login, password: password)
-}
+        RestApiManager.sharedInstance.login(login: user_login, password: password) {
+            responseObject in
+            
+            if(responseObject) {
+                self.performSegue(withIdentifier: "sucessLogin", sender: self)
+            } else {
+                self.printErrorMessage(message: "Incorrect login or/and password")
+            }
+        }
+    }
+    
     func printErrorMessage(message : String){
         self.errorMessage.text = message;
-}
+    }
 }
