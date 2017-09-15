@@ -26,6 +26,10 @@
 		49AB83C11E6B35E3007B9180 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49AB83BF1E6B35E3007B9180 /* LaunchScreen.storyboard */; };
 		49AB83CC1E6B35E3007B9180 /* ChiefTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AB83CB1E6B35E3007B9180 /* ChiefTests.swift */; };
 		49AB83D71E6B35E3007B9180 /* ChiefUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49AB83D61E6B35E3007B9180 /* ChiefUITests.swift */; };
+		49E732851F69B4C20003F134 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E732841F69B4C20003F134 /* StartViewController.swift */; };
+		49E732871F69C9EC0003F134 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E732861F69C9EC0003F134 /* TabBarViewController.swift */; };
+		49E732891F69E0FA0003F134 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E732881F69E0FA0003F134 /* ProfileViewController.swift */; };
+		49E7328B1F6B35B60003F134 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E7328A1F6B35B60003F134 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,7 @@
 		2CCE6AB3155073BF19AF6660 /* Pods_Chief.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chief.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4923EC151E6B5AB600A9F673 /* RestApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestApiManager.swift; sourceTree = "<group>"; };
 		4923EC171E6B5C1D00A9F673 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Recipe.swift; path = ../Recipe.swift; sourceTree = "<group>"; };
+		493C9E181F69B3B2007638C7 /* Chief.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Chief.entitlements; sourceTree = "<group>"; };
 		495472231F647D1800D579A7 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegistrationViewController.swift; path = Chief/RegistrationViewController.swift; sourceTree = "<group>"; };
 		4967A15D1F6092D600443A7F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		49734F161F24DA9800DEA2BA /* CompleteRecipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteRecipe.swift; sourceTree = "<group>"; };
@@ -71,6 +76,10 @@
 		49AB83D21E6B35E3007B9180 /* ChiefUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChiefUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49AB83D61E6B35E3007B9180 /* ChiefUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChiefUITests.swift; sourceTree = "<group>"; };
 		49AB83D81E6B35E3007B9180 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49E732841F69B4C20003F134 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		49E732861F69C9EC0003F134 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		49E732881F69E0FA0003F134 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		49E7328A1F6B35B60003F134 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CA2D41C5C7F1E156C5A61CB7 /* Pods-Chief.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chief.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chief/Pods-Chief.release.xcconfig"; sourceTree = "<group>"; };
 		EDB779184336EF3A6E82524E /* Pods-Chief.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chief.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chief/Pods-Chief.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,6 +114,7 @@
 		4996B7A51E6DFA5A00974FF6 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				49E7328A1F6B35B60003F134 /* User.swift */,
 				49734F161F24DA9800DEA2BA /* CompleteRecipe.swift */,
 				4923EC171E6B5C1D00A9F673 /* Recipe.swift */,
 				4996B7A61E6DFA8300974FF6 /* Ingredient.swift */,
@@ -146,6 +156,10 @@
 		49AB83B31E6B35E3007B9180 /* Chief */ = {
 			isa = PBXGroup;
 			children = (
+				49E732881F69E0FA0003F134 /* ProfileViewController.swift */,
+				49E732861F69C9EC0003F134 /* TabBarViewController.swift */,
+				49E732841F69B4C20003F134 /* StartViewController.swift */,
+				493C9E181F69B3B2007638C7 /* Chief.entitlements */,
 				498CC3441F14405F00D38654 /* colvwCell.swift */,
 				4996B7A81E6DFB3200974FF6 /* REST */,
 				4996B7A51E6DFA5A00974FF6 /* Objects */,
@@ -272,6 +286,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = LFSXRQW2Z2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					49AB83C61E6B35E3007B9180 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -407,12 +426,16 @@
 				49AB83B51E6B35E3007B9180 /* AppDelegate.swift in Sources */,
 				4996B7A71E6DFA8300974FF6 /* Ingredient.swift in Sources */,
 				4988EB941E807E4D000CAE40 /* SearchResultsController.swift in Sources */,
+				49E7328B1F6B35B60003F134 /* User.swift in Sources */,
+				49E732871F69C9EC0003F134 /* TabBarViewController.swift in Sources */,
 				4923EC161E6B5AB600A9F673 /* RestApiManager.swift in Sources */,
 				498CC3451F14405F00D38654 /* colvwCell.swift in Sources */,
 				495472241F647D1800D579A7 /* RegistrationViewController.swift in Sources */,
 				4923EC181E6B5C1D00A9F673 /* Recipe.swift in Sources */,
+				49E732851F69B4C20003F134 /* StartViewController.swift in Sources */,
 				498CC3431F1436BE00D38654 /* ViewController.swift in Sources */,
 				49734F171F24DA9800DEA2BA /* CompleteRecipe.swift in Sources */,
+				49E732891F69E0FA0003F134 /* ProfileViewController.swift in Sources */,
 				49AB83B71E6B35E3007B9180 /* FavoriteRecipesController.swift in Sources */,
 				4967A15E1F6092D600443A7F /* LoginViewController.swift in Sources */,
 			);
@@ -567,6 +590,7 @@
 			baseConfigurationReference = EDB779184336EF3A6E82524E /* Pods-Chief.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Chief/Chief.entitlements;
 				DEVELOPMENT_TEAM = LFSXRQW2Z2;
 				INFOPLIST_FILE = Chief/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -582,6 +606,7 @@
 			baseConfigurationReference = CA2D41C5C7F1E156C5A61CB7 /* Pods-Chief.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Chief/Chief.entitlements;
 				DEVELOPMENT_TEAM = LFSXRQW2Z2;
 				INFOPLIST_FILE = Chief/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

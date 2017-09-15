@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Locksmith
 
 class LoginViewController: UIViewController {
     
@@ -38,6 +39,11 @@ class LoginViewController: UIViewController {
             responseObject in
             
             if(responseObject) {
+                do {
+                    try Locksmith.saveData(data: ["user_name": user_login], forUserAccount: "myUserAccount")
+                } catch {
+                    
+                }
                 self.performSegue(withIdentifier: "sucessLogin", sender: self)
             } else {
                 self.printErrorMessage(message: "Incorrect login or/and password")

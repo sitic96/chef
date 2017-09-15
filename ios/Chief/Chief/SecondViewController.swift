@@ -27,19 +27,7 @@ class SecondViewController:UIViewController {
     }
     
     @IBAction func btnClicked(_ sender: Any) {
-        RestApiManager.sharedInstance.getRandomUser { (json: JSON) in
-            self.recipe = Recipe(json: json)
-            DispatchQueue.main.async(execute: {
-                self.tableView.tableFooterView = UIView()
-                self.tableView.reloadData()
-                self.tableView.isScrollEnabled = false;
-                self.tableView.frame = CGRect(x: self.tableView.frame.origin.x, y: self.tableView.frame.origin.y, width: self.tableView.frame.size.width, height: self.tableView.frame.size.height+(CGFloat(self.recipe.ingredients.count) * 50.0));
- 
-                self.nameLabel.text=self.recipe.name;
-                self.nameLabel.sizeToFit();
-                self.checkScrollSize()
-            })
-        }
+
     }
     @IBAction func hideShowButtonClicked(_ sender: UIButton) {
         tableView.isHidden = !tableView.isHidden

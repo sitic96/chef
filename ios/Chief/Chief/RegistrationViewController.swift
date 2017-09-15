@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Locksmith
 
 class RegistrationViewController: UIViewController {
 
@@ -60,6 +61,12 @@ class RegistrationViewController: UIViewController {
             responseObject, message in
             if(!responseObject){
                 self.printErrorMessage(message: message!)
+            } else{
+                do {
+                    try Locksmith.saveData(data: ["user_name": user_login], forUserAccount: "myUserAccount")
+                } catch {
+                    
+                }
             }
         }
     }

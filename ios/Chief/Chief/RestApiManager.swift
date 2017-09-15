@@ -9,6 +9,7 @@
 import Foundation
 import SwiftyJSON
 import Alamofire
+import Locksmith
 
 typealias ServiceResponse = (JSON, NSError?) -> Void
 
@@ -25,21 +26,19 @@ class RestApiManager: NSObject {
         })
     }
     
-    func getRandomUser(onCompletion: @escaping (JSON) -> Void) {
-        let route = baseURL
-        makeHTTPGetRequest(path: route, onCompletion: { json, err in
-            onCompletion(json as JSON)
-        })
+    func getUser(onCompletion: @escaping (JSON) -> Void) {
+        let login = Locksmith.loadDataForUserAccount(userAccount: "myUserAccount")?["user_name"]
+        if let result = login as? String {
+            let userName = "\(result)"
+            let route = baseURL + "/users/bylogin/" + userName
+            makeHTTPGetRequest(path: route, onCompletion: { json, err in
+                onCompletion(json as JSON)
+                
+            })
+        }
     }
     
     func getRandomRecipes(onCompletion: @escaping (JSON) -> Void) {
-        let route = URL + "recipes/random"
-        makeHTTPGetRequest(path: route, onCompletion: { json, err in
-            onCompletion(json as JSON)
-        })
-    }
-    
-    func getUser(onCompletion: @escaping (JSON) -> Void) {
         let route = URL + "recipes/random"
         makeHTTPGetRequest(path: route, onCompletion: { json, err in
             onCompletion(json as JSON)
@@ -144,4 +143,16 @@ class RestApiManager: NSObject {
             onCompletion(nil, nil)
         }
     }
+    
+    func getCategories(completionHandler: @escaping ([String], String?) -> ()) {
+        let route = baseURL + "categories/all"
+        Alamofire.request(.POST, route, parameters:nil, encoding: .JSON).responseJSON
+            {
+                (request, response, data, error) in
+                
+                var json = JSON(data: data!)
+                
+                println(json["productList"][1])                 
+                
+        }    }
 }
